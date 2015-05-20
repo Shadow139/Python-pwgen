@@ -29,7 +29,7 @@ class Example(Frame):
 
 
 def setCustomCharacterSet(event):
-    CharacterSets.setCUSTOM(app.getTextField().get())
+    CharacterSets.setCustom(app.getTextField().get())
 
 def main():
 
