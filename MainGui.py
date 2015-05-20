@@ -1,6 +1,9 @@
 __author__ = 'Shadow'
 
 from tkinter import *
+import CharacterSets
+import math
+
 
 
 class Example(Frame):
@@ -10,19 +13,29 @@ class Example(Frame):
 
         self.parent = parent
 
+        self.txtField = Entry(self,width = 20)
+
         self.initUI()
 
     def initUI(self):
 
         self.parent.title("pwgen")
         self.pack(fill=BOTH, expand=1)
-        txtField = Entry(self,width = 20)
-        txtField.pack(side = TOP)
+        self.txtField.pack(side = TOP)
+        self.txtField.bind('<Return>', setCustomCharacterSet)
+
+    def getTextField(self):
+        return self.txtField
+
+
+def setCustomCharacterSet(event):
+    CharacterSets.setCUSTOM(app.getTextField().get())
 
 def main():
 
     root = Tk()
     root.geometry("800x600")
+    global app
     app = Example(root)
     root.mainloop()
 
