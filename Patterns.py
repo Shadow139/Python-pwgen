@@ -8,4 +8,23 @@ __author__ = 'twi'
 # (..) = set of character sets - example: (aA0) - for permutations of lower, upper case and numbers
 pattern = []
 
-def setPattern():
+def addPattern(pattern):
+    return
+
+def removePattern(id):
+    return
+
+class Pattern():
+    def __init__(self,string,start,end):
+        self.string = string
+        self.start = start
+        self.end = end
+
+    def getString(self):
+        return self.string
+
+    def getStart(self):
+        return self.start
+
+    def getEnd(self):
+        return self.end
