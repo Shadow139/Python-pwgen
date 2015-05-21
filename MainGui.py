@@ -1,3 +1,4 @@
+from tkinter import filedialog
 from tkinter.ttk import Style
 
 __author__ = 'Shadow'
@@ -40,7 +41,7 @@ class MainFrame(Frame):
 
         #Listbox with the patterns
 
-        self.txtPattern = Entry(width = 30)
+        self.txtPattern = Entry(width=30)
         self.txtPattern.grid(row=1,column=4,columnspan=4,padx=3 ,pady=3,sticky='')
 
         self.lblPatterns = Label(text='Patterns: ').grid(row=0,column=4,columnspan=4,padx=3 ,pady=3,sticky='')
@@ -53,6 +54,11 @@ class MainFrame(Frame):
 
 
         # Generate Button
+        self.v = StringVar()
+        self.txtFilePath = Entry(width=30,textvariable=self.v)
+        self.txtFilePath.grid(row=9,column=0,columnspan=2,padx=3 ,pady=3,sticky='WSNE')
+        self.btnOpen = Button(text='...',command=openFile)
+        self.btnOpen.grid(row=9,column=3,padx=3 ,pady=3,sticky='WSNE')
         self.btnGenerate = Button(text='Generate', font=10, command=generate).grid(row=9,column=4,columnspan=4,padx=3 ,pady=3,sticky='WSNE')
 
 ##################################   End of Class   ########################################
@@ -78,7 +84,12 @@ def checkCustomToggle():
     else:
         app.txtCustom.configure(state='normal')
 
-##################################   Main   #################################
+def openFile():
+    file = filedialog.asksaveasfilename()
+    app.v.set(file)
+    print(file)
+
+##################################   Main #################################
 
 root = Tk()
 root.geometry("800x600")
