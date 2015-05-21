@@ -6,19 +6,33 @@ __author__ = 'twi'
 # # = custom character
 # ".." = string
 # (..) = set of character sets - example: (aA0) - for permutations of lower, upper case and numbers
-patterns = []
+patterns = {}
+idGen = 0
+
+def removeAllPatterns():
+    patterns = {}
 
 def addPattern(pattern):
-    return
+    patterns[idGen]=pattern
+    idGen = idGen+1
 
 def removePattern(id):
-    return
+    if (len(patterns) > id):
+        del patterns[id]
 
-class Pattern():
+def getPatternAt(id):
+    if (len(patterns) > id):
+        return patterns[id]
+
+class Pattern:
     def __init__(self,string,start,end):
-        self.string = string
-        self.start = start
-        self.end = end
+        if (self.ckeckInput(string)):
+            self.string = string
+            self.start = start
+            self.end = end
+        else:
+            raise ValueError("wrong fucking input for the pattern")
+
 
     def getString(self):
         return self.string
@@ -28,3 +42,5 @@ class Pattern():
 
     def getEnd(self):
         return self.end
+
+    def checkInput(self,string):

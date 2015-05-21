@@ -55,7 +55,7 @@ class MainFrame(Frame):
         # Generate Button
         self.btnGenerate = Button(text='Generate', font=10, command=generate).grid(row=9,column=4,columnspan=4,padx=3 ,pady=3,sticky='WSNE')
 
-##################################  End of Class ########################################
+##################################   End of Class   ########################################
 
 def setCustomCharacterSet(event):
     CharacterSets.setCustom(app.txtCustom.get())
@@ -78,7 +78,7 @@ def checkCustomToggle():
     else:
         app.txtCustom.configure(state='normal')
 
-##################################   Main #################################
+##################################   Main   #################################
 
 root = Tk()
 root.geometry("800x600")
