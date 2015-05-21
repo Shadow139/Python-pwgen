@@ -22,8 +22,6 @@ class MainFrame(Frame):
 
         #characterSet
         self.lblCharSet = Label(text='Character Set: ').grid(row=0,column=0,padx=3 ,pady=3,sticky='')
-        #self.txtCharSet = Entry(width = 30)
-        #self.txtCharSet.grid(row=0,column= 1,padx=3 ,pady=3,sticky='')
 
         self.lowerBool = IntVar()
         self.upperBool = IntVar()
@@ -64,7 +62,6 @@ class MainFrame(Frame):
         self.btnAddPattern = Button(text='Add',command=addPattern).grid(row=11,column=4,columnspan=2,padx=3 ,pady=3,sticky='WSNE')
         self.btnRemovePattern = Button(text='Remove',command=removePattern).grid(row=11,column=6,columnspan=2,padx=3 ,pady=3,sticky='WSNE')
 
-
         # Generate Button
         self.v = StringVar()
         self.txtFilePath = Entry(width=30,textvariable=self.v)
@@ -104,7 +101,7 @@ def openFile():
 ##################################   Main #################################
 
 root = Tk()
-root.geometry("800x600")
+root.geometry("600x400")
 global app
 app = MainFrame(root)
 root.mainloop()
