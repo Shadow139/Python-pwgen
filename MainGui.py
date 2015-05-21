@@ -46,11 +46,6 @@ class MainFrame(Frame):
         self.lblPatterns = Label(text='Patterns: ').grid(row=0,column=4,columnspan=4,padx=3 ,pady=3,sticky='')
 
         self.lsbPatterns = Listbox(height=5,width=25)
-        self.lsbPatterns.insert(END, "Pattern1")
-        self.lsbPatterns.insert(END, "Pattern2")
-        self.lsbPatterns.insert(END, "Pattern3")
-        self.lsbPatterns.insert(END, "Pattern4")
-        self.lsbPatterns.insert(END, "Pattern5")
         self.lsbPatterns.grid(row=2,column=4,rowspan=5,columnspan=4,padx=3 ,pady=3, sticky='WSNE')
 
         self.btnAddPattern = Button(text='Add',command=addPattern).grid(row=8,column=4,columnspan=2,padx=3 ,pady=3,sticky='WSNE')
@@ -60,14 +55,10 @@ class MainFrame(Frame):
         # Generate Button
         self.btnGenerate = Button(text='Generate', font=10, command=generate).grid(row=9,column=4,columnspan=4,padx=3 ,pady=3,sticky='WSNE')
 
-    def getTxtCharSet(self):
-        return self.txtCharSet
-
-
 ##################################  End of Class ########################################
 
 def setCustomCharacterSet(event):
-    CharacterSets.setCustom(app.getTxtCharSet().get())
+    CharacterSets.setCustom(app.txtCustom.get())
 
 def generate():
     print('Button Generate click.')
