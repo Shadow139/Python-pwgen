@@ -6,7 +6,7 @@ __author__ = 'twi'
 # # = custom character
 # ".." = string
 # (..) = set of character sets - example: (aA0) - for permutations of lower, upper case and numbers
-pattern = []
+patterns = []
 
 def addPattern(pattern):
     return
