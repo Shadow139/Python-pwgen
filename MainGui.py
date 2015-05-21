@@ -6,7 +6,6 @@ __author__ = 'Shadow'
 from tkinter import *
 import CharacterSets
 
-
 class MainFrame(Frame):
 
     def __init__(self, parent):
@@ -14,6 +13,8 @@ class MainFrame(Frame):
         self.parent = parent
 
         self.initUI()
+
+
     def initUI(self):
 
         self.parent.title("pwgen")
@@ -60,7 +61,7 @@ class MainFrame(Frame):
         self.btnOpen.grid(row=9,column=3,padx=3 ,pady=3,sticky='WSNE')
         self.btnGenerate = Button(text='Generate', font=10, command=generate).grid(row=9,column=4,columnspan=4,padx=3 ,pady=3,sticky='WSNE')
 
-##################################  End of Class ########################################
+##################################   End of Class   ########################################
 
 def setCustomCharacterSet(event):
     CharacterSets.setCustom(app.txtCustom.get())
