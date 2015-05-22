@@ -27,6 +27,7 @@ class MainFrame(Frame):
         self.upperBool = IntVar()
         self.numberBool = IntVar()
         self.customBool = IntVar()
+        self.manCharBool = IntVar()
 
         self.ckbLower = Checkbutton(text='lower case',variable=self.lowerBool).grid(row=1,column=0,padx=3 ,pady=3,sticky='W')
         self.ckbUpper = Checkbutton(text='UPPER CASE',variable=self.upperBool).grid(row=2,column=0,padx=3 ,pady=3,sticky='W')
@@ -37,8 +38,8 @@ class MainFrame(Frame):
         self.txtCustom.grid(row=5,column=0,columnspan=2,padx=25 ,pady=3,sticky='WSNE')
         self.txtCustom.bind('<Return>', setCustomCharacterSet)#
 
-        self.ckbManChar = Checkbutton(text='Manditory Characters',variable=self.customBool,command=checkCustomToggle).grid(row=6,column=0,columnspan=2,padx=3 ,pady=3,sticky='W')
-        self.txtmandChar = Entry(width = 30)
+        self.ckbManChar = Checkbutton(text='Manditory Characters',variable=self.manCharBool,command=ckbManCharToggle).grid(row=6,column=0,columnspan=2,padx=3 ,pady=3,sticky='W')
+        self.txtmandChar = Entry(width = 30,state='disabled')
         self.txtmandChar.grid(row=7,column=0,columnspan=2,padx=25 ,pady=3,sticky='WSNE')
         self.txtmandChar.bind('<Return>', setManditoryCharaters)
 
@@ -100,6 +101,12 @@ def checkCustomToggle():
         app.txtCustom.configure(state='disabled')
     else:
         app.txtCustom.configure(state='normal')
+
+def ckbManCharToggle():
+    if app.manCharBool.get() == 0:
+        app.txtmandChar.configure(state='disabled')
+    else:
+        app.txtmandChar.configure(state='normal')
 
 def openFile():
     file = filedialog.asksaveasfilename()
