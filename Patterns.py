@@ -14,7 +14,7 @@ def removeAllPatterns():
 
 def addPattern(pattern):
     patterns[idGen]=pattern
-    idGen = idGen+1
+    idGen += 1
 
 def removePattern(id):
     if (len(patterns) > id):

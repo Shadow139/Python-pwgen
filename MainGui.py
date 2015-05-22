@@ -37,9 +37,14 @@ class MainFrame(Frame):
         self.txtCustom.grid(row=5,column=0,columnspan=2,padx=25 ,pady=3,sticky='WSNE')
         self.txtCustom.bind('<Return>', setCustomCharacterSet)#
 
-        self.lblLength = Label(text='Password Length:').grid(row=6,column=0,columnspan=2,padx=3 ,pady=3,sticky='')
+        self.ckbManChar = Checkbutton(text='Manditory Characters',variable=self.customBool,command=checkCustomToggle).grid(row=6,column=0,columnspan=2,padx=3 ,pady=3,sticky='W')
+        self.txtmandChar = Entry(width = 30)
+        self.txtmandChar.grid(row=7,column=0,columnspan=2,padx=25 ,pady=3,sticky='WSNE')
+        self.txtmandChar.bind('<Return>', setManditoryCharaters)
+
+        self.lblLength = Label(text='Password Length:').grid(row=10,column=0,padx=25,pady=3,sticky='W')
         self.spbLength = Spinbox(from_=0, to=20)
-        self.spbLength.grid(row=7,column=0,padx=3 ,pady=3,sticky='WSNE')
+        self.spbLength.grid(row=11,column=0,padx=25 ,pady=3,sticky='WSNE')
 
         #Listbox with the patterns
 
@@ -74,6 +79,9 @@ class MainFrame(Frame):
 
 def setCustomCharacterSet(event):
     CharacterSets.setCustom(app.txtCustom.get())
+
+def setManditoryCharaters(event):
+    CharacterSets.setManditory(app.txtmandChar.get())
 
 def generate():
     print('Button Generate click.')
