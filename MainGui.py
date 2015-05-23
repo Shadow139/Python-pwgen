@@ -76,13 +76,17 @@ class MainFrame(Frame):
         self.btnOpen.grid(row=12,column=7,padx=3 ,pady=3,sticky='WSNE')
         self.btnGenerate = Button(text='Generate', font=10, command=generate).grid(row=13,column=0,rowspan=2,padx=3 ,pady=3,sticky='WSNE')
 
-##################################   End of Class   ########################################
+##################################   End of Class   ##################################
+
+# funktioniert aber man muss enter am ende drücken #
 
 def setCustomCharacterSet(event):
     CharacterSets.setCustom(app.txtCustom.get())
 
 def setManditoryCharaters(event):
     CharacterSets.setManditory(app.txtmandChar.get())
+
+#####################################################
 
 def generate():
     print('Button Generate click.')
@@ -113,7 +117,7 @@ def openFile():
     app.v.set(file)
     print(file)
 
-##################################   Main #################################
+##################################   Main   ##################################
 
 root = Tk()
 root.geometry("600x400")

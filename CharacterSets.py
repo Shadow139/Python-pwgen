@@ -16,3 +16,19 @@ def setManditory(string):
     manditory = []
     for x in string:
         manditory.append(x)
+    #print(manditory)
+
+def getAlpha():
+    return alpha
+
+def getAlphaBig():
+    return alphaBig
+
+def getNum():
+    return num
+
+def getCustom():
+    return custom
+
+def getManditory():
+    return manditory
