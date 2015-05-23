@@ -68,21 +68,3 @@ class Pattern:
                 amountQuotes = amountQuotes+1
         if (amountBrackets != 0 or amountQuotes%2 != 0):
             raise ValueError("wrong shit!! - either wrong amount of brackets or quotes or even both. you IDIOT!")
-
-    # for custom and manditory - if chracters are not unique, then it will return a string where all characters exist once
-    def checkIfUnique(self):
-        string = self.getString()
-        newString = ""
-        len = len(string)
-        count = 0
-        while count < len:
-            if self.countLetter(newString,string[count]) == 0:
-                newString = newString + string[count]
-            count += 1
-
-    def countLetter(self,string,char):
-        count = 0
-        for x in string:
-            if x == char:
-                count += 1
-        return count
