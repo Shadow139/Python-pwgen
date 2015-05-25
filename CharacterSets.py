@@ -1,9 +1,9 @@
 __author__ = 'Shadow'
 
 charSet = []
-alpha = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
-alphaBig = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
-num = ['0','1','2','3','4','5','6','7','8','9']
+alpha = 'abcdefghijklmnopqrstuvwxyz'
+alphaBig = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+num = '0123456789'
 custom = []
 manditory = []
 
@@ -19,14 +19,42 @@ def removeAlpha():
     if alpha in charSet:
         charSet.remove(alpha)
 
+def addAlphaBig():
+    global charSet
+    global alphaBig
+    if alphaBig not in charSet:
+        charSet.append(alphaBig)
+
+def removeAlphaBig():
+    global charSet
+    global alphaBig
+    if alphaBig in charSet:
+        charSet.remove(alphaBig)
+
 def setCustom(string):
     global custom
+    global charSet
+    if custom in charSet:
+        charSet.remove(custom)
     custom = checkIfUnique(string)
+    charSet.append(custom)
+
     #print(custom)
+
+def removeCustom():
+    global custom
+    global charSet
+    if custom in charSet:
+        charSet.remove(custom)
 
 def setManditory(string):
     global manditory
+    global charSet
+    for x in manditory:
+        if x not in charSet:
+            raise ValueError("characters that are manditory have to be in the charSet...")
     manditory = string
+
     #print(manditory)
 
 def getAlpha():
