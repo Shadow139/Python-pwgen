@@ -44,18 +44,15 @@ def getCustom():
 def getManditory():
     return manditory
 
-# for custom and manditory - if chracters are not unique, then it will return a string where all characters exist once
-def checkIfUnique(self,string):
+# for custom - if chracters are not unique, then it will return a string where all characters exist once
+def checkIfUnique(string):
     newString = ""
-    len = len(string)
-    count = 0
-    while count < len:
-        if self.countLetter(newString,string[count]) == 0:
-            newString = newString + string[count]
-        count += 1
-    return string
+    for x in string:
+        if countLetter(newString,x) == 0:
+            newString = newString + x
+    return newString
 
-def countLetter(self,string,char):
+def countLetter(string,char):
     count = 0
     for x in string:
         if x == char:
