@@ -72,6 +72,9 @@ def getCustom():
 def getManditory():
     return manditory
 
+def getCharSet():
+    return charSet
+
 # for custom - if chracters are not unique, then it will return a string where all characters exist once
 def checkIfUnique(string):
     newString = ""

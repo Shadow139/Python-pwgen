@@ -13,6 +13,7 @@ def removeAllPatterns():
     patterns = {}
 
 def addPattern(pattern):
+    global idGen
     patterns[idGen]=pattern
     idGen += 1
 
