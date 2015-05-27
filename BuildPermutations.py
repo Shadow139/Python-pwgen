@@ -32,8 +32,16 @@ def buildIt(string,len):
 # oh. and. filters.
 
 
+#                        Mein Test Shit
+
+
+
 def iter(string,length):
-    permList =list(permus(string, length))
+    #permList =list(permus(string, length))
+    #permList = list(itertools.combinations_with_replacement(string, length)) # Perfcet
+    #permList = list(combinations_with_replacement1(string, length))
+    permList = list(combinations_with_replacement2(string, length))  # This seems ok
+
     #permList =list(permus(range(3)))
 
     for x in permList:
@@ -65,10 +73,36 @@ def permus(string, r=None):
         else:
             return
 
-def permus2(iterable, r=None):
-    pool = tuple(iterable)
+def permus2(string, r=None):
+    pool = tuple(string)
     n = len(pool)
     r = n if r is None else r
     for indices in itertools.product(range(n), repeat=r):
         if len(set(indices)) == r:
+            yield tuple(pool[i] for i in indices)
+
+
+def combinations_with_replacement1(iterable, r):
+    "combinations_with_replacement('ABC', 2) --> AA AB AC BB BC CC"
+    # number items returned:  (n+r-1)! / r! / (n-1)!
+    pool = tuple(iterable)
+    n = len(pool)
+    indices = [0] * r
+    yield tuple(pool[i] for i in indices)
+    while 1:
+        for i in reversed(range(r)):
+            if indices[i] != n - 1:
+                break
+        else:
+            return
+        indices[i:] = [indices[i] + 1] * (r - i)
+        yield tuple(pool[i] for i in indices)
+
+
+def combinations_with_replacement2(iterable, r):
+    'Alternate version that filters from product()'
+    pool = tuple(iterable)
+    n = len(pool)
+    for indices in itertools.product(range(n), repeat=r):
+        if sorted(indices) == list(indices):
             yield tuple(pool[i] for i in indices)
