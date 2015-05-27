@@ -2,6 +2,7 @@ __author__ = 'twi'
 
 perm = []
 
+# endless-loopcd
 # string should be the charSet
 def buildIt(string,len):
     global perm
@@ -16,6 +17,6 @@ def buildIt(string,len):
                 perm.append(x+y)
             if x in perm:
                 perm.remove(x)
-
+    print(perm)
 # should be written into buffer and everything - right now it saves everything in an array and...yea.
 # oh. and. filters.

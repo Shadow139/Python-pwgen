@@ -1,5 +1,6 @@
 from tkinter import filedialog
 from tkinter.ttk import Style
+import BuildPermutations
 
 __author__ = 'Shadow'
 
@@ -123,6 +124,7 @@ root = Tk()
 root.geometry("600x400")
 global app
 app = MainFrame(root)
+BuildPermutations.buildIt('01',3)
 root.mainloop()
 
 
