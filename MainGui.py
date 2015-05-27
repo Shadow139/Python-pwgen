@@ -90,7 +90,7 @@ def setManditoryCharaters(event):
 #####################################################
 
 def generate():
-    print('Button Generate click.')
+    BuildPermutations.buildIt('01',3)
     return
 
 def addPattern():
@@ -124,7 +124,6 @@ root = Tk()
 root.geometry("600x400")
 global app
 app = MainFrame(root)
-BuildPermutations.buildIt('01',3)
 root.mainloop()
 
 
