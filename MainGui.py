@@ -46,6 +46,7 @@ class MainFrame(Frame):
 
         self.lblLength = Label(text='Password Length:').grid(row=10,column=0,padx=25,pady=3,sticky='W')
         self.spbLength = Spinbox(from_=0, to=20)
+        #Sself.spbLength.icursor(5)
         self.spbLength.grid(row=11,column=0,padx=25 ,pady=3,sticky='WSNE')
 
         #Listbox with the patterns
@@ -90,7 +91,10 @@ def setManditoryCharaters(event):
 #####################################################
 
 def generate():
-    BuildPermutations.buildIt('01',3)
+    print('characters: ',app.txtCustom.get())
+    print('length: ',app.spbLength.get())
+    BuildPermutations.iter(app.txtCustom.get(),int(app.spbLength.get()))
+
     return
 
 def addPattern():
