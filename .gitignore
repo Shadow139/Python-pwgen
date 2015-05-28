@@ -8,3 +8,5 @@
 .idea/scopes/scope_settings.xml
 .idea/Python-pwgen.iml
 __pycache__/MainGui.cpython-34.pyc
+__pycache__/CharacterSets.cpython-34.pyc
+__pycache__/BuildPermutations.cpython-34.pyc
