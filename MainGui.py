@@ -5,7 +5,9 @@ import BuildPermutations
 __author__ = 'Shadow'
 
 from tkinter import *
+from Generator import *
 import CharacterSets
+
 
 class MainFrame(Frame):
 
@@ -93,6 +95,7 @@ def setManditoryCharaters(event):
 def generate():
     print('characters: ',app.txtCustom.get())
     print('length: ',app.spbLength.get())
+    test = Generator(app.spbLength.get(),app.txtCustom.get(),app.txtFilePath.get())
     BuildPermutations.iter(app.txtCustom.get(),int(app.spbLength.get()))
 
     return
