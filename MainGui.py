@@ -48,7 +48,7 @@ class MainFrame(Frame):
 
         self.lblLength = Label(text='Password Length:').grid(row=10,column=0,padx=25,pady=3,sticky='W')
         self.spbLength = Spinbox(from_=0, to=20)
-        #Sself.spbLength.icursor(5)
+        self.spbLength.insert(0, 1) #http://stackoverflow.com/questions/16500052/tkinter-spinbox-widget-setting-default-value
         self.spbLength.grid(row=11,column=0,padx=25 ,pady=3,sticky='WSNE')
 
         #Listbox with the patterns
