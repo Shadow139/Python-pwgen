@@ -69,8 +69,8 @@ def getNum():
 def getCustom():
     return custom
 
-def getManditory():
-    return manditory
+def getMandatory():
+    return mandatory
 
 def getCharSet():
     return charSet
