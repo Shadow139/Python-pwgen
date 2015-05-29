@@ -44,7 +44,7 @@ class MainFrame(Frame):
         self.ckbManChar = Checkbutton(text='Mandatory Characters',variable=self.manCharBool,command=ckbManCharToggle).grid(row=6,column=0,columnspan=2,padx=3 ,pady=3,sticky='W')
         self.txtmandChar = Entry(width = 30,state='disabled')
         self.txtmandChar.grid(row=7,column=0,columnspan=2,padx=25 ,pady=3,sticky='WSNE')
-        self.txtmandChar.bind('<Return>', setManditoryCharaters)
+        self.txtmandChar.bind('<Return>', setMandatoryCharacters)
 
         self.lblLength = Label(text='Password Length:').grid(row=10,column=0,padx=25,pady=3,sticky='W')
         self.spbLength = Spinbox(from_=0, to=20)
@@ -87,8 +87,8 @@ class MainFrame(Frame):
 def setCustomCharacterSet(event):
     CharacterSets.setCustom(app.txtCustom.get())
 
-def setManditoryCharaters(event):
-    CharacterSets.setManditory(app.txtmandChar.get())
+def setMandatoryCharacters(event):
+    CharacterSets.setMandatory(app.txtmandChar.get())
 
 #####################################################
 
