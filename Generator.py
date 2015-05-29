@@ -1,13 +1,17 @@
 __author__ = 'Hollow'
 from BuildPermutations import *
+from tkinter import messagebox
 
 class Generator():
     def __init__(self,length,string,filePath):
         #self.characterSet = characterSet
         #self.patterns = patterns
         self.filePath = filePath
-        file = open(filePath,'w')
-        self.combinations_with_replacement(string,int(length),file)
+        try:
+            file = open(filePath,'w')
+            self.combinations_with_replacement(string,int(length),file)
+        except IOError as e:
+            messagebox.showinfo("Error", "I/O error({0}): {1}".format(e.errno, e.strerror))
 
     def combinations_with_replacement(self,iterable, r, file):
         'Alternate version that filters from product()'

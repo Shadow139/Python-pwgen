@@ -5,7 +5,7 @@ alpha = 'abcdefghijklmnopqrstuvwxyz'
 alphaBig = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 num = '0123456789'
 custom = []
-manditory = []
+mandatory = []
 
 def addAlpha():
     global charSet
@@ -47,15 +47,15 @@ def removeCustom():
     if custom in charSet:
         charSet.remove(custom)
 
-def setManditory(string):
-    global manditory
+def setMandatory(string):
+    global mandatory
     global charSet
-    for x in manditory:
+    for x in mandatory:
         if x not in charSet:
-            raise ValueError("characters that are manditory have to be in the charSet...")
-    manditory = string
+            raise ValueError("characters that are mandatory have to be in the charSet...")
+    mandatory = string
 
-    #print(manditory)
+    #print(mandatory)
 
 def getAlpha():
     return alpha
@@ -69,13 +69,13 @@ def getNum():
 def getCustom():
     return custom
 
-def getManditory():
-    return manditory
+def getMandatory():
+    return mandatory
 
 def getCharSet():
     return charSet
 
-# for custom - if chracters are not unique, then it will return a string where all characters exist once
+# for custom - if characters are not unique, then it will return a string where all characters exist once
 def checkIfUnique(string):
     newString = ""
     for x in string:
