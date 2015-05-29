@@ -41,7 +41,7 @@ class MainFrame(Frame):
         self.txtCustom.grid(row=5,column=0,columnspan=2,padx=25 ,pady=3,sticky='WSNE')
         self.txtCustom.bind('<Return>', setCustomCharacterSet)#
 
-        self.ckbManChar = Checkbutton(text='Manditory Characters',variable=self.manCharBool,command=ckbManCharToggle).grid(row=6,column=0,columnspan=2,padx=3 ,pady=3,sticky='W')
+        self.ckbManChar = Checkbutton(text='Mandatory Characters',variable=self.manCharBool,command=ckbManCharToggle).grid(row=6,column=0,columnspan=2,padx=3 ,pady=3,sticky='W')
         self.txtmandChar = Entry(width = 30,state='disabled')
         self.txtmandChar.grid(row=7,column=0,columnspan=2,padx=25 ,pady=3,sticky='WSNE')
         self.txtmandChar.bind('<Return>', setManditoryCharaters)
