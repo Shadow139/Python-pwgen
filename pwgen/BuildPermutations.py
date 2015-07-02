@@ -40,13 +40,13 @@ def iter(string,length):
     #permList =list(permus(string, length))
     #permList = list(itertools.combinations_with_replacement(string, length)) # Perfcet
     #permList = list(combinations_with_replacement1(string, length))
-    #permList = list(combinations_with_replacement2(string, length))  # This seems ok
-    combinations_with_replacement2(string, length)
+    permList = list(combinations_with_replacement2(string, length))  # This seems ok
 
     #permList =list(permus(range(3)))
-    #for x in permList:
-    #    print(x)
-    #print(len(permList))
+
+    for x in permList:
+        print(x)
+    print(len(permList))
 
 def permus(string, r=None):
     # permutations('ABCD', 2) --> AB AC AD BA BC BD CA CB CD DA DB DC
@@ -102,10 +102,10 @@ def combinations_with_replacement1(iterable, r):
 def combinations_with_replacement2(iterable, r):
     'Alternate version that filters from product()'
     pool = tuple(iterable)
-    print('pool: ', pool)
+    print(pool)
     n = len(pool)
-    print('length: ', n)
+    print(n)
     for indices in itertools.product(range(n), repeat=r):
+        print('--',indices)
         if sorted(indices) == list(indices):
-            print('tuple: ',tuple(pool[i] for i in indices))
-            #yield tuple(pool[i] for i in indices)
+            yield tuple(pool[i] for i in indices)
