@@ -1,8 +1,18 @@
 __author__ = 'twi'
 
 import itertools
+from newTryBecause.Permutations import permute_wiktor,permute_wiktor_file,product
+from tkinter import messagebox
 
-permList = list(itertools.product("abcde", repeat = 12))  # This seems ok
+filePath = "test.txt"
+
+
+try:
+   file = open(filePath,'w')
+except IOError as e:
+    messagebox.showinfo("Error", "I/O error({0}): {1}".format(e.errno, e.strerror))
+
+permList = list(itertools.product("abcde", repeat = 4))
 
 
 for x in permList:
