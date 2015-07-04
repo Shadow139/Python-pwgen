@@ -2,6 +2,14 @@ __author__ = 'twi'
 import itertools
 from tkinter import messagebox
 
+def permute_uli(string):
+    for i in string:
+        return
+
+
+def permute_uli_theObviouslyBetterOne():
+    return
+
 def permute_wiktor(*args, **kwds):
     # product('ABCD', 'xy') --> Ax Ay Bx By Cx Cy Dx Dy
     # product(range(2), repeat=3) --> 000 001 010 011 100 101 110 111
