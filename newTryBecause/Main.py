@@ -7,4 +7,4 @@ import newTryBecause.Permutations
 
 filePath = "test.txt"
 
-newTryBecause.Permutations.permuteWithTree_Uli("abc",3,0,"",0,"",3)
+

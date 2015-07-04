@@ -3,26 +3,36 @@ import itertools
 from tkinter import messagebox
 
 class Permutations:
-    def __init__(self, filepath, pwlength,alphabet):
-        self.filepath = filepath
+
+    def __init__(self, file, pwlength,alphabet):
+        self.file = file
         self.pwlength = pwlength
         self.alphabet = alphabet
 
 
 
-def permuteWithTree_Uli(charset,maxlen,lenOfPerm,lastChar,repetitionCount,permutationRightNow,maxRep):
-    if (lenOfPerm == maxlen):
-        print(permutationRightNow)
-        return
-    for i in charset:
-        count = repetitionCount
-        if lastChar == i:
-            count += 1
-        if count > maxRep:
+    def permuteWithTree_Uli(self,lenOfPerm,lastChar,repetitionCount,permutationRightNow,maxRep):
+        if (lenOfPerm == self.pwlength):
+            print(permutationRightNow)
+            self.file.write(permutationRightNow+"\n")
             return
-        perm = permutationRightNow
-        perm += i
-        permuteWithTree_Uli(charset,maxlen,lenOfPerm+1,i,count,perm,maxRep)
+        for i in self.alphabet:
+            count = repetitionCount
+
+            if lastChar == i:
+                count += 1
+            if count > maxRep:
+                return
+
+            if not self.checkShit():
+                return
+
+            perm = permutationRightNow
+            perm += i
+            self.permuteWithTree_Uli(lenOfPerm+1,i,count,perm,maxRep)
+
+    def checkShit(self,string):
+        return True
 
 
 def permute_uli(string):
