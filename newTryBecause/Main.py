@@ -12,7 +12,7 @@ try:
 except IOError as e:
     messagebox.showinfo("Error", "I/O error({0}): {1}".format(e.errno, e.strerror))
 
-permList = list(itertools.product("abcde", repeat = 4))
+permList = list(product(file,"abcdefghij", repeat = 10))
 
 
 for x in permList:
