@@ -9,8 +9,6 @@ class Permutations:
         self.pwlength = pwlength
         self.alphabet = alphabet
 
-
-
     def permuteWithTree_Uli(self,lenOfPerm,lastChar,repetitionCount,permutationRightNow,maxRep):
         if (lenOfPerm == self.pwlength):
             print(permutationRightNow)
@@ -24,7 +22,7 @@ class Permutations:
             if count > maxRep:
                 return
 
-            if not self.checkShit():
+            if not self.checkShit(permutationRightNow):
                 return
 
             perm = permutationRightNow

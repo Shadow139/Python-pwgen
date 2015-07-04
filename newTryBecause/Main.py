@@ -1,10 +1,16 @@
 __author__ = 'twi'
 
 import itertools
-from newTryBecause.Permutations import permute_wiktor,permute_wiktor_file,product
+import Permutations
 from tkinter import messagebox
-import newTryBecause.Permutations
 
-filePath = "test.txt"
+filepath = "test.txt"
 
+try:
+    file = open(filepath,'w')
+except IOError as e:
+    print("IOError")
 
+perm = Permutations.Permutations(file,12,"abcdefg")
+
+perm.permuteWithTree_Uli(0,"",0,"",12)
