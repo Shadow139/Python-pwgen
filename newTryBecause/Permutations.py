@@ -2,6 +2,14 @@ __author__ = 'twi'
 import itertools
 from tkinter import messagebox
 
+class Permutations:
+    def __init__(self, filepath, pwlength,alphabet):
+        self.filepath = filepath
+        self.pwlength = pwlength
+        self.alphabet = alphabet
+
+
+
 def permuteWithTree_Uli(charset,maxlen,lenOfPerm,lastChar,repetitionCount,permutationRightNow,maxRep):
     if (lenOfPerm == maxlen):
         print(permutationRightNow)
