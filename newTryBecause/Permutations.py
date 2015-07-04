@@ -2,6 +2,20 @@ __author__ = 'twi'
 import itertools
 from tkinter import messagebox
 
+def permuteWithTree_Uli(charset,maxlen,lenOfPerm,lastChar,repetitionCount,permutationRightNow,maxRep):
+    if (lenOfPerm == maxlen):
+        return
+    for i in charset:
+        count = repetitionCount
+        if lastChar == i:
+            count += 1
+        if count > maxRep:
+            return 
+        perm = permutationRightNow
+        perm += i
+        permuteWithTree_Uli(charset,maxlen,lenOfPerm+1,i,count,perm,maxRep)
+
+
 def permute_uli(string):
     for i in string:
         return
