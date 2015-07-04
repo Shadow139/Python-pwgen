@@ -1,13 +1,16 @@
+from newTryBecause import CharacterSet
+
 __author__ = 'twi'
 import itertools
 from tkinter import messagebox
 
 class Permutations:
 
-    def __init__(self, file, pwlength,alphabet):
+    def __init__(self,file,pwlength,constraints):
         self.file = file
         self.pwlength = pwlength
-        self.alphabet = alphabet
+        self.alphabet = CharacterSet.getCharSet()
+        self.constraints = constraints
 
     def permuteWithTree_Uli(self,lenOfPerm,lastChar,repetitionCount,permutationRightNow,maxRep):
         if (lenOfPerm == self.pwlength):
@@ -30,7 +33,9 @@ class Permutations:
             self.permuteWithTree_Uli(lenOfPerm+1,i,count,perm,maxRep)
 
     def checkShit(self,string):
-        return True
+        if string[len(string)-1] in self.constraints[len(string)-1]:
+            return True
+        return False
 
 
 def permute_uli(string):
