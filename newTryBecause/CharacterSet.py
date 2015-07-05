@@ -85,3 +85,12 @@ def countLetter(string,char):
         if x == char:
             count += 1
     return count
+
+constraints = []
+
+def initConstraints(string,length):
+    charSet = getCharSet()
+    i = 0
+    while i < length:
+        constraints[i] = charSet
+        i += 1
