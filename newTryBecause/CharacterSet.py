@@ -88,7 +88,7 @@ def countLetter(string,char):
 
 constraints = []
 
-def initConstraints(string,length):
+def initConstraints(length):
     charSet = getCharSet()
     i = 0
     while i < length:

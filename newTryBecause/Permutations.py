@@ -10,7 +10,8 @@ class Permutations:
         self.file = file
         self.pwlength = pwlength
         self.alphabet = CharacterSet.getCharSet()
-        self.constraints = constraints
+        CharacterSet.initConstraints(constraints,pwlength)
+        self.constraints = CharacterSet.constraints
 
     def permuteWithTree_Uli(self,lenOfPerm,lastChar,repetitionCount,permutationRightNow,maxRep):
         if (lenOfPerm == self.pwlength):
