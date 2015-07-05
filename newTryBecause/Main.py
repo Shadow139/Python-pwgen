@@ -1,7 +1,8 @@
 __author__ = 'twi'
 
 import itertools
-import Permutations
+import newTryBecause.Permutations
+import newTryBecause.CharacterSet
 from tkinter import messagebox
 
 filepath = "test.txt"
@@ -11,6 +12,7 @@ try:
 except IOError as e:
     print("IOError")
 
-perm = Permutations.Permutations(file,12,"abcdefg")
-
-perm.permuteWithTree_Uli(0,"",0,"",12)
+charSet = newTryBecause.CharacterSet.CharacterSet(True,False,True,"","")
+constraints = newTryBecause.CharacterSet.Constraints(4,charSet)
+perm = newTryBecause.Permutations.Permutations(file,4,constraints,charSet)
+perm.permuteWithTree_Uli(4,"",0,"",4)

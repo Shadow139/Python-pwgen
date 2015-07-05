@@ -6,17 +6,17 @@ from tkinter import messagebox
 
 class Permutations:
 
-    def __init__(self,file,pwlength,constraints):
+    def __init__(self,file,pwlength,constraints,charSet):
         self.file = file
         self.pwlength = pwlength
-        self.alphabet = CharacterSet.getCharSet()
-        CharacterSet.initConstraints(constraints,pwlength)
-        self.constraints = CharacterSet.constraints
+        self.charSet = charSet
+        self.alphabet = charSet.getCharSet()
+        self.constraints = constraints
 
     def permuteWithTree_Uli(self,lenOfPerm,lastChar,repetitionCount,permutationRightNow,maxRep):
         if (lenOfPerm == self.pwlength):
             print(permutationRightNow)
-            self.file.write(permutationRightNow+"\n")
+            #self.file.write(permutationRightNow+"\n")
             return
         for i in self.alphabet:
             count = repetitionCount
