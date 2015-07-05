@@ -115,7 +115,7 @@ class Constraints:
         i = 0
         while i < self.pwlength:
             self.constraints[i] = charSet
-            print(self.constraints)
+            #print(self.constraints)
             i += 1
 
     def changeConstraint(self,id,string):
