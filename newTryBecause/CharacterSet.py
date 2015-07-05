@@ -1,5 +1,7 @@
 __author__ = 'twi'
 
+import re
+
 alphaF = 'abcdefghijklmnopqrstuvwxyz'
 alphaBigF = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 numF = '0123456789'
@@ -87,6 +89,7 @@ def countLetter(string,char):
     return count
 
 constraints = []
+pattern = re.compile("^[aA0#$]+$")
 
 def initConstraints(length):
     charSet = getCharSet()
@@ -94,3 +97,18 @@ def initConstraints(length):
     while i < length:
         constraints[i] = charSet
         i += 1
+
+def changeConstraint(id,string):
+    charSet = getCharSet()
+    if len(string) == 3 and string[0] == "\"" and string[2] == "\"" and string[1] in getCharSet():
+        constraints[id] = string[1]
+    elif pattern.match(string):
+        chars = ""
+        for i in string:
+            if i in charSet:
+                chars += i
+            else:
+                raise ValueError("you are so fuuucked. stuff that is not in charset is here. ya know.")
+            constraints[id] = chars
+    else:
+        raise ValueError("wrong input. idiots!! how did this happen. =(")
