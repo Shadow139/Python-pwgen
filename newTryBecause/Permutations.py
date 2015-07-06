@@ -8,12 +8,17 @@ class Permutations:
 
     def __init__(self,file,pwlength,constraints,charSet):
         self.file = file
+        #print("file: {f}".format(f=file))
         self.pwlength = pwlength
+        #print("pwlen: {l}".format(l=pwlength))
         self.charSet = charSet
         self.alphabet = charSet.getCharSet()
-        self.constraints = constraints
+        #print("alphabet: {a}".format(a=self.alphabet))
+        self.constraints = constraints.constraints
+        #print("constraints: {c}".format(c=self.constraints))
 
     def permuteWithTree_Uli(self,lenOfPerm,lastChar,repetitionCount,permutationRightNow,maxRep):
+        #print("enter")
         if (lenOfPerm == self.pwlength):
             print(permutationRightNow)
             #self.file.write(permutationRightNow+"\n")
@@ -25,7 +30,7 @@ class Permutations:
                 count += 1
             if count > maxRep:
                 return
-
+            #print("should go in check..")
             if not self.checkShit(permutationRightNow):
                 return
 
@@ -34,8 +39,16 @@ class Permutations:
             self.permuteWithTree_Uli(lenOfPerm+1,i,count,perm,maxRep)
 
     def checkShit(self,string):
-        if string[len(string)-1] in self.constraints[len(string)-1]:
+        #print("lenString: {l}".format(l=len(string)))
+        #print("string: {s}".format(s=string))
+        if len(string) == 0:
             return True
+        x = len(string)-1
+        #print("constraints: {c}".format(c=self.constraints[x]))
+        if string[x] in self.constraints[x]:
+            #print("True")
+            return True
+        #print("False")
         return False
 
 

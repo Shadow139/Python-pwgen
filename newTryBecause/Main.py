@@ -12,7 +12,7 @@ try:
 except IOError as e:
     print("IOError")
 
-charSet = newTryBecause.CharacterSet.CharacterSet(True,False,True,"","")
+charSet = newTryBecause.CharacterSet.CharacterSet(True,True,True,"#-$?","")
 constraints = newTryBecause.CharacterSet.Constraints(4,charSet)
 perm = newTryBecause.Permutations.Permutations(file,4,constraints,charSet)
-perm.permuteWithTree_Uli(4,"",0,"",4)
+perm.permuteWithTree_Uli(0,"",0,"",4)

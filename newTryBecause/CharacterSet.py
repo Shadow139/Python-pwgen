@@ -4,9 +4,13 @@ import re
 
 class CharacterSet:
 
-    alphaF = 'abcdefghijklmnopqrstuvwxyz'
-    alphaBigF = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-    numF = '0123456789'
+    alphaF2 = 'abcdefghijklmnopqrstuvwxyz'
+    alphaBigF2 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    numF2 = '0123456789'
+
+    alphaF = 'abcnopqrstuxyz'
+    alphaBigF = 'ABCOPQRSTUVWXYZ'
+    numF  = '0123789'
 
     alpha = False
     alphaBig = False
@@ -109,6 +113,7 @@ class Constraints:
         self.pwlength = pwlength
         self.characterSet = characterSet
         self.initConstraints()
+        #print(self.constraints)
 
     def initConstraints(self):
         charSet = self.characterSet.getCharSet()
@@ -117,6 +122,7 @@ class Constraints:
             self.constraints[i] = charSet
             #print(self.constraints)
             i += 1
+        #print(self.constraints)
 
     def changeConstraint(self,id,string):
         charSet = self.getCharSet()
