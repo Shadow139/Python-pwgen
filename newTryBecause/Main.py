@@ -12,7 +12,13 @@ try:
 except IOError as e:
     print("IOError")
 
-charSet = newTryBecause.CharacterSet.CharacterSet(True,True,True,"#-$?","")
-constraints = newTryBecause.CharacterSet.Constraints(4,charSet)
-perm = newTryBecause.Permutations.Permutations(file,4,constraints,charSet)
-perm.permuteWithTree_Uli(0,"",0,"",4)
+charSet = newTryBecause.CharacterSet.CharacterSet(True,False,False,"#-$?","")
+constraints = newTryBecause.CharacterSet.Constraints(5,charSet)
+constraints.changeConstraint(0,"#")
+constraints.changeConstraint(1,"a")
+constraints.changeConstraint(2,"#")
+constraints.changeConstraint(3,"a")
+constraints.changeConstraint(4,"#")
+#print(constraints.constraints)
+perm = newTryBecause.Permutations.Permutations(file,5,constraints,charSet)
+perm.permuteWithTree_Uli(0,"",0,"",5)

@@ -125,7 +125,9 @@ class Constraints:
         #print(self.constraints)
 
     def changeConstraint(self,id,string):
-        charSet = self.getCharSet()
+        if id >= self.pwlength:
+            raise ValueError("too big value. IDIOT. id. thing.")
+        charSet = self.characterSet.getCharSet()
         if len(string) == 3 and string[0] == "\"" and string[2] == "\"" and string[1] in self.getCharSet():
             self.constraints[id] = string[1]
         elif self.pattern.match(string):
@@ -149,5 +151,7 @@ class Constraints:
                     actualChars += self.characterSet.custom
                 else:
                     raise ValueError("you did the undoable..")
+            self.constraints[id] = actualChars
+            #print(self.constraints)
         else:
             raise ValueError("wrong input. idiots!! how did this happen. =(")
