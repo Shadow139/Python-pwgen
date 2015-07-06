@@ -132,9 +132,22 @@ class Constraints:
             chars = ""
             for i in string:
                 if i in charSet:
+                    if i in chars:
+                        raise ValueError("you be stupid. because. not more than once everythingieee! dont know how you did it..")
                     chars += i
                 else:
                     raise ValueError("you are so fuuucked. stuff that is not in charset is here. ya know.")
-                self.constraints[id] = chars
+            actualChars = ""
+            for i in chars:
+                if i == "a":
+                    actualChars += self.characterSet.alphaF
+                elif i == "A":
+                    actualChars += self.characterSet.alphaBigF
+                elif i == "0":
+                    actualChars += self.characterSet.numF
+                elif i == "#":
+                    actualChars += self.characterSet.custom
+                else:
+                    raise ValueError("you did the undoable..")
         else:
             raise ValueError("wrong input. idiots!! how did this happen. =(")
