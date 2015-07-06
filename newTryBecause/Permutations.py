@@ -1,3 +1,4 @@
+import re
 from newTryBecause import CharacterSet
 
 __author__ = 'twi'
@@ -17,9 +18,12 @@ class Permutations:
         self.constraints = constraints.constraints
         #print("constraints: {c}".format(c=self.constraints))
 
-    def permuteWithTree_Uli(self,lenOfPerm,lastChar,repetitionCount,permutationRightNow,maxRep):
+    def permuteWithTree_Uli(self,lenOfPerm,lastChar,repetitionCount,permutationRightNow,maxRep,mandatory):
         #print("enter")
-        if (lenOfPerm == self.pwlength):
+        if not self.checkShit(permutationRightNow):
+            return
+        if lenOfPerm == self.pwlength and len(mandatory) == 0:
+            #print("pwd:")
             print(permutationRightNow)
             #self.file.write(permutationRightNow+"\n")
             return
@@ -31,12 +35,18 @@ class Permutations:
             if count > maxRep:
                 return
             #print("should go in check..")
-            if not self.checkShit(permutationRightNow):
+            if len(mandatory) > self.pwlength-lenOfPerm:
                 return
+
+            newMan = mandatory
+
+            if i in mandatory:
+                regex = re.compile(i)
+                newMan = regex.sub("", newMan, 1)
 
             perm = permutationRightNow
             perm += i
-            self.permuteWithTree_Uli(lenOfPerm+1,i,count,perm,maxRep)
+            self.permuteWithTree_Uli(lenOfPerm+1,i,count,perm,maxRep,newMan)
 
     def checkShit(self,string):
         #print("lenString: {l}".format(l=len(string)))
@@ -44,8 +54,12 @@ class Permutations:
         if len(string) == 0:
             return True
         x = len(string)-1
+        #print(string)
         #print("constraints: {c}".format(c=self.constraints[x]))
         if string[x] in self.constraints[x]:
+            #print(x)
+            #print(string[x])
+            #print(self.constraints[x])
             #print("True")
             return True
         #print("False")

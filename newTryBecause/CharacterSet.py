@@ -128,7 +128,7 @@ class Constraints:
         if id >= self.pwlength:
             raise ValueError("too big value. IDIOT. id. thing.")
         charSet = self.characterSet.getCharSet()
-        if len(string) == 3 and string[0] == "\"" and string[2] == "\"" and string[1] in self.getCharSet():
+        if len(string) == 3 and string[0] == "{" and string[2] == "}" and string[1] in self.characterSet.getCharSet():
             self.constraints[id] = string[1]
         elif self.pattern.match(string):
             chars = ""
