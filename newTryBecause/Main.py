@@ -4,7 +4,7 @@ import itertools
 import newTryBecause.Permutations
 import newTryBecause.CharacterSet
 from tkinter import messagebox
-import newTryBecause.interface_ui
+import newTryBecause.interface02_ui
 from PyQt4 import QtCore, QtGui
 import sys
 
@@ -31,6 +31,6 @@ if __name__ == '__main__':
     #perm.permuteWithTree_Uli(0,"",0,"",5,charSet.mandatory)
 
     app = QtGui.QApplication(sys.argv)
-    ex = newTryBecause.interface_ui.Ui_MainWindow()
+    ex = newTryBecause.interface02_ui.Ui_MainWindow()
     ex.show()
     sys.exit(app.exec_())

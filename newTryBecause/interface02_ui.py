@@ -7,6 +7,8 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt4 import QtCore, QtGui
+import newTryBecause.Permutations
+import newTryBecause.CharacterSet
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -23,6 +25,14 @@ except AttributeError:
         return QtGui.QApplication.translate(context, text, disambig)
 
 class Ui_MainWindow(object):
+
+    def __init__(self):
+        self.charSet = newTryBecause.CharacterSet.CharacterSet(False,False,False,"","")
+        self.pwdLength = 1
+        self.constraints = newTryBecause.CharacterSet.Constraints(self.pwdLength,self.charSet)
+        QtGui.QWidget.__init__(self)
+        self.setupUi(self)
+
     def setupUi(self, MainWindow):
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
         MainWindow.resize(794, 535)
@@ -154,6 +164,9 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
+
+        self.setUpEvents()
+
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -175,3 +188,20 @@ class Ui_MainWindow(object):
         self.cbx_outputStream.setText(_translate("MainWindow", "output-stream", None))
         self.button_startButton.setText(_translate("MainWindow", "do it!!", None))
 
+    def setUpEvents(self):
+        self.cbx_lowerCase.stateChanged.connect(self.setAlpha)
+        self.cbx_UpperCase.stateChanged.connect(self.setAlphaBig)
+        self.cbx_numbers.stateChanged.connect(self.setNum)
+
+    def setPwdLength(self,pwdlen):
+        self.pwdLength = pwdlen
+
+    def setAlpha(self):
+        self.charSet.setAlpha(False if self.cbx_lowerCase.checkState() == 0 else True)
+        #print(self.charSet.alpha)
+
+    def setAlphaBig(self):
+        self.charSet.setAlphaBig(False if self.cbx_UpperCase.checkState() == 0 else True)
+
+    def setNum(self):
+        self.charSet.setNum(False if self.cbx_numbers.checkState() == 0 else True)
