@@ -4,13 +4,13 @@ import re
 
 class CharacterSet:
 
-    alphaF2 = 'abcdefghijklmnopqrstuvwxyz'
-    alphaBigF2 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-    numF2 = '0123456789'
+    alphaF = 'abcdefghijklmnopqrstuvwxyz'
+    alphaBigF = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    numF = '0123456789'
 
-    alphaF = 'abcnopqrstuxyz'
-    alphaBigF = 'ABCOPQRSTUVWXYZ'
-    numF  = '0123789'
+    #alphaF = 'abcnopqrstuxyz'
+    #alphaBigF = 'ABCOPQRSTUVWXYZ'
+    #numF  = '0123789'
 
     alpha = False
     alphaBig = False
@@ -25,24 +25,15 @@ class CharacterSet:
         self.custom = custom
         self.mandatory = mandatory
 
-    def addAlpha(self):
-        alpha = True
+    def setAlpha(self,bool):
+        self.alpha = bool
 
-    def removeAlpha(self):
-        alpha = False
-
-    def addAlphaBig(self):
-        alphaBig = True
-
-    def removeAlphaBig(self):
-        alphaBig = False
+    def setAlphaBig(self,bool):
+        self.alphaBig = bool
 
     def setCustom(self,string):
         global custom
         custom = self.checkIfUnique(string)
-
-    def removeCustom(self):
-        custom = []
 
     def setMandatory(self,string):
         global mandatory

@@ -8,6 +8,7 @@
 
 from PyQt4 import QtCore, QtGui
 import sys
+from PyQt4.QtCore import SIGNAL, SLOT, pyqtSlot
 import newTryBecause.Permutations
 import newTryBecause.CharacterSet
 
@@ -27,6 +28,9 @@ except AttributeError:
 
 class Ui_MainWindow(QtGui.QWidget):
     def __init__(self):
+        self.charSet = newTryBecause.CharacterSet.CharacterSet(False,False,False,"","")
+        self.pwdLength = 1
+        self.constraints = newTryBecause.CharacterSet.Constraints(self.pwdLength,self.charSet)
         QtGui.QWidget.__init__(self)
         self.setupUi(self)
 
@@ -158,6 +162,9 @@ class Ui_MainWindow(QtGui.QWidget):
         #MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
+
+        self.setUpEvents()
+
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -178,34 +185,17 @@ class Ui_MainWindow(QtGui.QWidget):
         self.checkBox_7.setText(_translate("MainWindow", "output-stream", None))
         self.pushButton_2.setText(_translate("MainWindow", "do it!!", None))
 
-        self.pushButton_2.clicked.connect(self.startPermutaion())
+        #self.pushButton_2.clicked.connect(self.startPermutation)
 
-    def startPermutation(self):
-        perm.permuteWithTree_Uli(0,"",0,"",5,charSet.mandatory)
+    def setUpEvents(self):
+        self.checkBox.stateChanged.connect(self.hallo)
 
-if __name__ == '__main__':
+    def setPwdLength(self,pwdlen):
+        self.pwdLength = pwdlen
 
-    filepath = "test.txt"
+    def hallo(self):
+        print("hallo")
 
-    try:
-        file = open(filepath,'w')
-    except IOError as e:
-        print("IOError")
-
-    charSet = newTryBecause.CharacterSet.CharacterSet(True,False,False,"#-$?","tu")
-    constraints = newTryBecause.CharacterSet.Constraints(5,charSet)
-    constraints.changeConstraint(0,"#")
-    constraints.changeConstraint(1,"a")
-    constraints.changeConstraint(2,"#")
-    constraints.changeConstraint(3,"a")
-    constraints.changeConstraint(4,"{b}")
-    #print(constraints.constraints)
-    perm = newTryBecause.Permutations.Permutations(file,5,constraints,charSet)
-    #perm.permuteWithTree_Uli(0,"",0,"",5,charSet.mandatory)
-
-
-    app = QtGui.QApplication(sys.argv)
-    ex = Ui_MainWindow()
-    ex.show()
-    sys.exit(app.exec_())
+    #def startPermutation(self):
+    #    perm.permuteWithTree_Uli(0,"",0,"",5,charSet.mandatory)
 
