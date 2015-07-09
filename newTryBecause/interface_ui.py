@@ -7,6 +7,7 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt4 import QtCore, QtGui
+import sys
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -22,7 +23,11 @@ except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
 
-class Ui_MainWindow(object):
+class Ui_MainWindow(QtGui.QWidget):
+    def __init__(self):
+        QtGui.QWidget.__init__(self)
+        self.setupUi(self)
+
     def setupUi(self, MainWindow):
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
         MainWindow.resize(794, 535)
@@ -171,3 +176,8 @@ class Ui_MainWindow(object):
         self.radioButton_7.setText(_translate("MainWindow", "as output-stream", None))
         self.pushButton_2.setText(_translate("MainWindow", "do it!!", None))
 
+if __name__ == '__main__':
+    app = QtGui.QApplication(sys.argv)
+    ex = Ui_MainWindow()
+    ex.show()
+    sys.exit(app.exec_())
