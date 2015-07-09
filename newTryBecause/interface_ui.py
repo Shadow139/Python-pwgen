@@ -188,13 +188,22 @@ class Ui_MainWindow(QtGui.QWidget):
         #self.pushButton_2.clicked.connect(self.startPermutation)
 
     def setUpEvents(self):
-        self.checkBox.stateChanged.connect(self.hallo)
+        self.checkBox.stateChanged.connect(self.setAlpha)
+        self.checkBox_2.stateChanged.connect(self.setAlphaBig)
+        self.checkBox_3.stateChanged.connect(self.setNum)
 
     def setPwdLength(self,pwdlen):
         self.pwdLength = pwdlen
 
-    def hallo(self):
-        print("hallo")
+    def setAlpha(self):
+        self.charSet.setAlpha(False if self.checkBox.checkState() == 0 else True)
+        #print(self.charSet.alpha)
+
+    def setAlphaBig(self):
+        self.charSet.setAlphaBig(False if self.checkBox_2.checkState() == 0 else True)
+
+    def setNum(self):
+        self.charSet.setNum(False if self.checkBox_3.checkState() == 0 else True)
 
     #def startPermutation(self):
     #    perm.permuteWithTree_Uli(0,"",0,"",5,charSet.mandatory)

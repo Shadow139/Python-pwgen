@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <widget class="QWidget" name="centralwidget">
+  <widget class="QWidget" name="THEWINDOW">
    <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">
      <rect>
@@ -25,45 +25,45 @@
     </property>
     <layout class="QVBoxLayout" name="CharSetInput">
      <item>
-      <widget class="QCheckBox" name="checkBox">
+      <widget class="QCheckBox" name="cbx_lowerCase">
        <property name="text">
         <string>lowercase</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QCheckBox" name="checkBox_2">
+      <widget class="QCheckBox" name="cbx_UpperCase">
        <property name="text">
         <string>uppercase</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QCheckBox" name="checkBox_3">
+      <widget class="QCheckBox" name="cbx_numbers">
        <property name="text">
         <string>numbers</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QCheckBox" name="checkBox_4">
+      <widget class="QCheckBox" name="cbx_custom">
        <property name="text">
         <string>custom</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit"/>
+      <widget class="QLineEdit" name="linetxt_custom"/>
      </item>
      <item>
-      <widget class="QCheckBox" name="checkBox_5">
+      <widget class="QCheckBox" name="cbx_mandatory">
        <property name="text">
         <string>mandatory</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit_2"/>
+      <widget class="QLineEdit" name="linetxt_mandatory"/>
      </item>
     </layout>
    </widget>
@@ -84,21 +84,21 @@
     <property name="geometry">
      <rect>
       <x>409</x>
-      <y>199</y>
+      <y>239</y>
       <width>371</width>
-      <height>231</height>
+      <height>191</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="listOfConstraints">
      <item>
-      <widget class="QLabel" name="label_5">
+      <widget class="QLabel" name="label_constraints">
        <property name="text">
         <string>constraints:</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QListView" name="listView"/>
+      <widget class="QListView" name="listView_constraints"/>
      </item>
     </layout>
    </widget>
@@ -113,14 +113,14 @@
     </property>
     <layout class="QVBoxLayout" name="lengthOfPwd">
      <item>
-      <widget class="QLabel" name="label">
+      <widget class="QLabel" name="label_length">
        <property name="text">
-        <string>length:</string>
+        <string>length of password:</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QSpinBox" name="spinBox">
+      <widget class="QSpinBox" name="spinBx_lengthPwd">
        <property name="minimum">
         <number>1</number>
        </property>
@@ -142,21 +142,21 @@
     </property>
     <layout class="QVBoxLayout" name="inputFileName">
      <item>
-      <widget class="QCheckBox" name="checkBox_6">
+      <widget class="QCheckBox" name="cbx_saveInFile">
        <property name="text">
         <string>save in a file</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="label_2">
+      <widget class="QLabel" name="label_filePath">
        <property name="text">
         <string>file:</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit_3"/>
+      <widget class="QLineEdit" name="line_file"/>
      </item>
     </layout>
    </widget>
@@ -166,48 +166,55 @@
       <x>409</x>
       <y>9</y>
       <width>371</width>
-      <height>185</height>
+      <height>217</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="inputConstraints">
      <item>
-      <widget class="QLabel" name="label_3">
+      <widget class="QLabel" name="label_beginningConstraint">
        <property name="text">
         <string>beginning of constraint</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QSpinBox" name="spinBox_2"/>
+      <widget class="QSpinBox" name="spinBox_beginningConstraint"/>
      </item>
      <item>
-      <widget class="QLabel" name="label_4">
+      <widget class="QLabel" name="label_lenConstraint">
        <property name="text">
         <string>length of constraint</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QSlider" name="horizontalSlider">
+      <widget class="QSlider" name="slider_lenConstraint">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="label_6">
+      <widget class="QLabel" name="label_allowedChars">
        <property name="text">
         <string>allowed characters</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit_4"/>
+      <widget class="QLineEdit" name="lineEdit_allowedChars"/>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="button_addConstraint">
        <property name="text">
         <string>add new constraint</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="button_deleteConstraint">
+       <property name="text">
+        <string>delete constraint</string>
        </property>
       </widget>
      </item>
@@ -224,7 +231,7 @@
     </property>
     <layout class="QVBoxLayout" name="outputstrem">
      <item>
-      <widget class="QCheckBox" name="checkBox_7">
+      <widget class="QCheckBox" name="cbx_outputStream">
        <property name="text">
         <string>output-stream</string>
        </property>
@@ -245,7 +252,7 @@
      <enum>Qt::Horizontal</enum>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="button_startButton">
     <property name="geometry">
      <rect>
       <x>10</x>
