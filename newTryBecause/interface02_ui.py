@@ -24,7 +24,7 @@ except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
 
-class Ui_MainWindow(object):
+class Ui_MainWindow(QtGui.QWidget):
 
     def __init__(self):
         self.charSet = newTryBecause.CharacterSet.CharacterSet(False,False,False,"","")
@@ -153,15 +153,15 @@ class Ui_MainWindow(object):
         self.button_startButton = QtGui.QPushButton(self.THEWINDOW)
         self.button_startButton.setGeometry(QtCore.QRect(10, 450, 771, 31))
         self.button_startButton.setObjectName(_fromUtf8("button_startButton"))
-        MainWindow.setCentralWidget(self.THEWINDOW)
-        self.MenuBar = QtGui.QMenuBar(MainWindow)
-        self.MenuBar.setGeometry(QtCore.QRect(0, 0, 794, 25))
-        self.MenuBar.setDefaultUp(False)
-        self.MenuBar.setObjectName(_fromUtf8("MenuBar"))
-        MainWindow.setMenuBar(self.MenuBar)
-        self.statusbar = QtGui.QStatusBar(MainWindow)
-        self.statusbar.setObjectName(_fromUtf8("statusbar"))
-        MainWindow.setStatusBar(self.statusbar)
+        #MainWindow.setCentralWidget(self.THEWINDOW)
+        #self.MenuBar = QtGui.QMenuBar(MainWindow)
+        #self.MenuBar.setGeometry(QtCore.QRect(0, 0, 794, 25))
+        #self.MenuBar.setDefaultUp(False)
+        #self.MenuBar.setObjectName(_fromUtf8("MenuBar"))
+        #MainWindow.setMenuBar(self.MenuBar)
+        #self.statusbar = QtGui.QStatusBar(MainWindow)
+        #self.statusbar.setObjectName(_fromUtf8("statusbar"))
+        #MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
 
@@ -202,6 +202,8 @@ class Ui_MainWindow(object):
 
     def setAlphaBig(self):
         self.charSet.setAlphaBig(False if self.cbx_UpperCase.checkState() == 0 else True)
+        #print(self.charSet.alphaBig)
 
     def setNum(self):
         self.charSet.setNum(False if self.cbx_numbers.checkState() == 0 else True)
+        #print(self.charSet.num)

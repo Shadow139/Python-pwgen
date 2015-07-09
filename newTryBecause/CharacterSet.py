@@ -31,6 +31,9 @@ class CharacterSet:
     def setAlphaBig(self,bool):
         self.alphaBig = bool
 
+    def setNum(self,bool):
+        self.num = bool
+
     def setCustom(self,string):
         global custom
         custom = self.checkIfUnique(string)
