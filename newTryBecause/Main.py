@@ -4,6 +4,7 @@ import itertools
 import newTryBecause.Permutations
 import newTryBecause.CharacterSet
 from tkinter import messagebox
+import PyQt4
 
 filepath = "test.txt"
 
@@ -21,4 +22,4 @@ constraints.changeConstraint(3,"a")
 constraints.changeConstraint(4,"{b}")
 #print(constraints.constraints)
 perm = newTryBecause.Permutations.Permutations(file,5,constraints,charSet)
-perm.permuteWithTree_Uli(0,"",0,"",5,charSet.mandatorymeh)
+perm.permuteWithTree_Uli(0,"",0,"",5,charSet.mandatory)
