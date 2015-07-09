@@ -1,13 +1,12 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'interface_try00.ui'
+# Form implementation generated from reading ui file 'interface_try01.ui'
 #
 # Created by: PyQt4 UI code generator 4.11.4
 #
 # WARNING! All changes made in this file will be lost!
 
 from PyQt4 import QtCore, QtGui
-import sys
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -23,11 +22,7 @@ except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
 
-class Ui_MainWindow(QtGui.QWidget):
-    def __init__(self):
-        QtGui.QWidget.__init__(self)
-        self.setupUi(self)
-
+class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
         MainWindow.resize(794, 535)
@@ -38,24 +33,24 @@ class Ui_MainWindow(QtGui.QWidget):
         self.verticalLayoutWidget.setObjectName(_fromUtf8("verticalLayoutWidget"))
         self.CharSetInput = QtGui.QVBoxLayout(self.verticalLayoutWidget)
         self.CharSetInput.setObjectName(_fromUtf8("CharSetInput"))
-        self.radioButton_2 = QtGui.QRadioButton(self.verticalLayoutWidget)
-        self.radioButton_2.setObjectName(_fromUtf8("radioButton_2"))
-        self.CharSetInput.addWidget(self.radioButton_2)
-        self.radioButton_4 = QtGui.QRadioButton(self.verticalLayoutWidget)
-        self.radioButton_4.setObjectName(_fromUtf8("radioButton_4"))
-        self.CharSetInput.addWidget(self.radioButton_4)
-        self.radioButton_3 = QtGui.QRadioButton(self.verticalLayoutWidget)
-        self.radioButton_3.setObjectName(_fromUtf8("radioButton_3"))
-        self.CharSetInput.addWidget(self.radioButton_3)
-        self.radioButton = QtGui.QRadioButton(self.verticalLayoutWidget)
-        self.radioButton.setObjectName(_fromUtf8("radioButton"))
-        self.CharSetInput.addWidget(self.radioButton)
+        self.checkBox = QtGui.QCheckBox(self.verticalLayoutWidget)
+        self.checkBox.setObjectName(_fromUtf8("checkBox"))
+        self.CharSetInput.addWidget(self.checkBox)
+        self.checkBox_2 = QtGui.QCheckBox(self.verticalLayoutWidget)
+        self.checkBox_2.setObjectName(_fromUtf8("checkBox_2"))
+        self.CharSetInput.addWidget(self.checkBox_2)
+        self.checkBox_3 = QtGui.QCheckBox(self.verticalLayoutWidget)
+        self.checkBox_3.setObjectName(_fromUtf8("checkBox_3"))
+        self.CharSetInput.addWidget(self.checkBox_3)
+        self.checkBox_4 = QtGui.QCheckBox(self.verticalLayoutWidget)
+        self.checkBox_4.setObjectName(_fromUtf8("checkBox_4"))
+        self.CharSetInput.addWidget(self.checkBox_4)
         self.lineEdit = QtGui.QLineEdit(self.verticalLayoutWidget)
         self.lineEdit.setObjectName(_fromUtf8("lineEdit"))
         self.CharSetInput.addWidget(self.lineEdit)
-        self.radioButton_5 = QtGui.QRadioButton(self.verticalLayoutWidget)
-        self.radioButton_5.setObjectName(_fromUtf8("radioButton_5"))
-        self.CharSetInput.addWidget(self.radioButton_5)
+        self.checkBox_5 = QtGui.QCheckBox(self.verticalLayoutWidget)
+        self.checkBox_5.setObjectName(_fromUtf8("checkBox_5"))
+        self.CharSetInput.addWidget(self.checkBox_5)
         self.lineEdit_2 = QtGui.QLineEdit(self.verticalLayoutWidget)
         self.lineEdit_2.setObjectName(_fromUtf8("lineEdit_2"))
         self.CharSetInput.addWidget(self.lineEdit_2)
@@ -93,9 +88,9 @@ class Ui_MainWindow(QtGui.QWidget):
         self.verticalLayoutWidget_4.setObjectName(_fromUtf8("verticalLayoutWidget_4"))
         self.inputFileName = QtGui.QVBoxLayout(self.verticalLayoutWidget_4)
         self.inputFileName.setObjectName(_fromUtf8("inputFileName"))
-        self.radioButton_6 = QtGui.QRadioButton(self.verticalLayoutWidget_4)
-        self.radioButton_6.setObjectName(_fromUtf8("radioButton_6"))
-        self.inputFileName.addWidget(self.radioButton_6)
+        self.checkBox_6 = QtGui.QCheckBox(self.verticalLayoutWidget_4)
+        self.checkBox_6.setObjectName(_fromUtf8("checkBox_6"))
+        self.inputFileName.addWidget(self.checkBox_6)
         self.label_2 = QtGui.QLabel(self.verticalLayoutWidget_4)
         self.label_2.setObjectName(_fromUtf8("label_2"))
         self.inputFileName.addWidget(self.label_2)
@@ -134,9 +129,9 @@ class Ui_MainWindow(QtGui.QWidget):
         self.verticalLayoutWidget_6.setObjectName(_fromUtf8("verticalLayoutWidget_6"))
         self.outputstrem = QtGui.QVBoxLayout(self.verticalLayoutWidget_6)
         self.outputstrem.setObjectName(_fromUtf8("outputstrem"))
-        self.radioButton_7 = QtGui.QRadioButton(self.verticalLayoutWidget_6)
-        self.radioButton_7.setObjectName(_fromUtf8("radioButton_7"))
-        self.outputstrem.addWidget(self.radioButton_7)
+        self.checkBox_7 = QtGui.QCheckBox(self.verticalLayoutWidget_6)
+        self.checkBox_7.setObjectName(_fromUtf8("checkBox_7"))
+        self.outputstrem.addWidget(self.checkBox_7)
         self.line_2 = QtGui.QFrame(self.centralwidget)
         self.line_2.setGeometry(QtCore.QRect(10, 430, 771, 21))
         self.line_2.setFrameShape(QtGui.QFrame.HLine)
@@ -160,24 +155,19 @@ class Ui_MainWindow(QtGui.QWidget):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow", None))
-        self.radioButton_2.setText(_translate("MainWindow", "uppercase", None))
-        self.radioButton_4.setText(_translate("MainWindow", "lowercase", None))
-        self.radioButton_3.setText(_translate("MainWindow", "numbers", None))
-        self.radioButton.setText(_translate("MainWindow", "custom characters", None))
-        self.radioButton_5.setText(_translate("MainWindow", "manditory characters", None))
+        self.checkBox.setText(_translate("MainWindow", "lowercase", None))
+        self.checkBox_2.setText(_translate("MainWindow", "uppercase", None))
+        self.checkBox_3.setText(_translate("MainWindow", "numbers", None))
+        self.checkBox_4.setText(_translate("MainWindow", "custom", None))
+        self.checkBox_5.setText(_translate("MainWindow", "mandatory", None))
         self.label_5.setText(_translate("MainWindow", "constraints:", None))
         self.label.setText(_translate("MainWindow", "length:", None))
-        self.radioButton_6.setText(_translate("MainWindow", "save in a file", None))
+        self.checkBox_6.setText(_translate("MainWindow", "save in a file", None))
         self.label_2.setText(_translate("MainWindow", "file:", None))
         self.label_3.setText(_translate("MainWindow", "beginning of constraint", None))
         self.label_4.setText(_translate("MainWindow", "length of constraint", None))
         self.label_6.setText(_translate("MainWindow", "allowed characters", None))
         self.pushButton.setText(_translate("MainWindow", "add new constraint", None))
-        self.radioButton_7.setText(_translate("MainWindow", "as output-stream", None))
+        self.checkBox_7.setText(_translate("MainWindow", "output-stream", None))
         self.pushButton_2.setText(_translate("MainWindow", "do it!!", None))
 
-if __name__ == '__main__':
-    app = QtGui.QApplication(sys.argv)
-    ex = Ui_MainWindow()
-    ex.show()
-    sys.exit(app.exec_())
