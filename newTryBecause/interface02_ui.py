@@ -33,6 +33,8 @@ class Ui_MainWindow(QtGui.QWidget):
         self.constraints = newTryBecause.CharacterSet.Constraints(self.pwdLength,self.charSet)
         QtGui.QWidget.__init__(self)
         self.setupUi(self)
+        self.saveInFile = False
+        self.output = False
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
@@ -192,15 +194,19 @@ class Ui_MainWindow(QtGui.QWidget):
         self.linetxt_mandatory.setEnabled(False)
 
     def setUpEvents(self):
+        # CHECKBOXES
         self.cbx_lowerCase.stateChanged.connect(self.setAlpha)
         self.cbx_UpperCase.stateChanged.connect(self.setAlphaBig)
         self.cbx_numbers.stateChanged.connect(self.setNum)
         self.cbx_custom.stateChanged.connect(self.enableCustom)
         self.cbx_mandatory.stateChanged.connect(self.enableMandatory)
 
+        # TEXTINPUT
         self.linetxt_custom.editingFinished.connect(self.setCustom)
         self.linetxt_mandatory.editingFinished.connect(self.setMandatory)
-        #self.linetxt_custom.deselect.connect(self.setCustom)
+
+        # SPINBOXES
+        self.spinBx_lengthPwd.editingFinished.connect(self.setPwdLen)
 
         # TODO
 
@@ -247,3 +253,7 @@ class Ui_MainWindow(QtGui.QWidget):
         else:
             #print("wrong")
             QMessageBox.warning(self,"You Idiot", "it is not possible to have more mandatory characters than your password is long...")
+
+    def setPwdLen(self):
+        self.pwdLength = self.spinBx_lengthPwd.text()
+        #print(self.pwdLength)
