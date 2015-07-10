@@ -34,7 +34,7 @@ class Ui_MainWindow(QtGui.QWidget):
         QtGui.QWidget.__init__(self)
         self.setupUi(self)
         self.saveInFile = False
-        self.output = False
+        self.outputStream = False
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
@@ -200,10 +200,13 @@ class Ui_MainWindow(QtGui.QWidget):
         self.cbx_numbers.stateChanged.connect(self.setNum)
         self.cbx_custom.stateChanged.connect(self.enableCustom)
         self.cbx_mandatory.stateChanged.connect(self.enableMandatory)
+        self.cbx_saveInFile.stateChanged.connect(self.setSaveFile)
+        self.cbx_outputStream.stateChanged.connect(self.setOutputStream)
 
         # TEXTINPUT
         self.linetxt_custom.editingFinished.connect(self.setCustom)
         self.linetxt_mandatory.editingFinished.connect(self.setMandatory)
+        self.line_file.fo
 
         # SPINBOXES
         self.spinBx_lengthPwd.editingFinished.connect(self.setPwdLen)
@@ -257,3 +260,14 @@ class Ui_MainWindow(QtGui.QWidget):
     def setPwdLen(self):
         self.pwdLength = self.spinBx_lengthPwd.text()
         #print(self.pwdLength)
+
+    def setSaveFile(self):
+        self.pwdLength = (False if self.cbx_saveInFile.checkState() == 0 else True)
+        #print(self.pwdLength)
+
+    def setOutputStream(self):
+        self.outputStream = (False if self.cbx_outputStream.checkState() == 0 else True)
+        #print(self.outputStream)
+
+    def setFile(self):
+        print("traLaLa")
