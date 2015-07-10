@@ -7,6 +7,7 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt4 import QtCore, QtGui
+from PyQt4.QtGui import QMessageBox
 import newTryBecause.Permutations
 import newTryBecause.CharacterSet
 
@@ -197,6 +198,8 @@ class Ui_MainWindow(QtGui.QWidget):
         self.cbx_custom.stateChanged.connect(self.enableCustom)
         self.cbx_mandatory.stateChanged.connect(self.enableMandatory)
 
+        self.linetxt_custom.editingFinished.connect(self.setCustom)
+        self.linetxt_mandatory.editingFinished.connect(self.setMandatory)
         #self.linetxt_custom.deselect.connect(self.setCustom)
 
         # TODO
@@ -224,9 +227,23 @@ class Ui_MainWindow(QtGui.QWidget):
 
     def setCustom(self):
         self.charSet.setCustom(self.linetxt_custom.text())
+        #print(self.linetxt_custom.text())
+        self.linetxt_custom.setText(self.charSet.getCustom())
+        print(self.charSet.getCharSet())
 
     def enableMandatory(self):
         self.linetxt_mandatory.setEnabled(False if self.cbx_mandatory.checkState() == 0 else True)
         if not self.linetxt_mandatory.isEnabled():
             self.linetxt_mandatory.setText("")
             self.charSet.setMandatory("")
+
+    def setMandatory(self):
+        if len(self.linetxt_mandatory.text()) <= self.pwdLength:
+            try:
+                self.charSet.setMandatory(self.linetxt_mandatory.text())
+            except ValueError as e:
+                QMessageBox.warning(self,"ValueError!", str(e))
+            #print("right")
+        else:
+            #print("wrong")
+            QMessageBox.warning(self,"You Idiot", "it is not possible to have more mandatory characters than your password is long...")

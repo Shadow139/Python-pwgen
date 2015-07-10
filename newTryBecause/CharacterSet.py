@@ -35,23 +35,15 @@ class CharacterSet:
         self.num = bool
 
     def setCustom(self,string):
-        global custom
-        custom = self.checkIfUnique(string)
+        self.custom = self.checkIfUnique(string)
+        #print(self.getCustom())
 
     def setMandatory(self,string):
-        global mandatory
-        charSet = []
-        if self.alpha:
-            charSet.append(self.alphaF)
-        if self.alphaBig:
-            charSet.append(self.alphaBigF)
-        if self.num:
-            charSet.append(self.numF)
-        charSet.append(custom)
+        charSet = self.getCharSet()
         for x in string:
             if x not in charSet:
                 raise ValueError("characters that are mandatory have to be actually used you fucking idiot.")
-        mandatory = string
+        self.mandatory = string
 
     def getAlpha(self):
         return self.alpha
@@ -63,6 +55,7 @@ class CharacterSet:
         return self.num
 
     def getCustom(self):
+        #print(self.custom)
         return self.custom
 
     def getMandatory(self):
@@ -86,9 +79,10 @@ class CharacterSet:
         for x in string:
             if self.countLetter(newString,x) == 0:
                 newString = newString + x
+            #print(newString)
         return newString
 
-    def countLetter(string,char):
+    def countLetter(self,string,char):
         if len(string) == 0:
             return 0
         count = 0
