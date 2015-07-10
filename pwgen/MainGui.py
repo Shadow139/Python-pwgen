@@ -85,10 +85,10 @@ class MainFrame(Frame):
 # funktioniert aber man muss enter am ende drücken #
 
 def setCustomCharacterSet(event):
-    CharacterSets.setCustom(app.txtCustom.get())
+    CharacterSets.enableCustom(app.txtCustom.get())
 
 def setMandatoryCharacters(event):
-    CharacterSets.setMandatory(app.txtmandChar.get())
+    CharacterSets.enableMandatory(app.txtmandChar.get())
 
 #####################################################
 

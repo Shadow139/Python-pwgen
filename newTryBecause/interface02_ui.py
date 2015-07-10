@@ -187,11 +187,19 @@ class Ui_MainWindow(QtGui.QWidget):
         self.button_deleteConstraint.setText(_translate("MainWindow", "delete constraint", None))
         self.cbx_outputStream.setText(_translate("MainWindow", "output-stream", None))
         self.button_startButton.setText(_translate("MainWindow", "do it!!", None))
+        self.linetxt_custom.setEnabled(False)
+        self.linetxt_mandatory.setEnabled(False)
 
     def setUpEvents(self):
         self.cbx_lowerCase.stateChanged.connect(self.setAlpha)
         self.cbx_UpperCase.stateChanged.connect(self.setAlphaBig)
         self.cbx_numbers.stateChanged.connect(self.setNum)
+        self.cbx_custom.stateChanged.connect(self.enableCustom)
+        self.cbx_mandatory.stateChanged.connect(self.enableMandatory)
+
+        #self.linetxt_custom.deselect.connect(self.setCustom)
+
+        # TODO
 
     def setPwdLength(self,pwdlen):
         self.pwdLength = pwdlen
@@ -207,3 +215,18 @@ class Ui_MainWindow(QtGui.QWidget):
     def setNum(self):
         self.charSet.setNum(False if self.cbx_numbers.checkState() == 0 else True)
         #print(self.charSet.num)
+
+    def enableCustom(self):
+        self.linetxt_custom.setEnabled(False if self.cbx_custom.checkState() == 0 else True)
+        if not self.linetxt_custom.isEnabled():
+            self.linetxt_custom.setText("")
+            self.charSet.setCustom("")
+
+    def setCustom(self):
+        self.charSet.setCustom(self.linetxt_custom.text())
+
+    def enableMandatory(self):
+        self.linetxt_mandatory.setEnabled(False if self.cbx_mandatory.checkState() == 0 else True)
+        if not self.linetxt_mandatory.isEnabled():
+            self.linetxt_mandatory.setText("")
+            self.charSet.setMandatory("")

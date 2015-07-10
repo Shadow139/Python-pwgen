@@ -89,6 +89,8 @@ class CharacterSet:
         return newString
 
     def countLetter(string,char):
+        if len(string) == 0:
+            return 0
         count = 0
         for x in string:
             if x == char:
