@@ -303,6 +303,7 @@ class Ui_MainWindow(QtGui.QWidget):
         self.outputStream = (False if self.checkbox_outputStream.checkState() == 0 else True)
         #print(self.outputStream)
 
+    # YES - and if not...wiktor did it
     def setFile(self):
         print("traLaLa")
         self.linetext_fileChooser.setText(QFileDialog.getOpenFileName())
