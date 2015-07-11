@@ -35,6 +35,9 @@ class Ui_MainWindow(QtGui.QWidget):
         self.setupUi(self)
         self.saveInFile = False
         self.outputStream = False
+        self.tempConstraintBegin = 1
+        self.tempConstraintLen = 1
+        self.tempConstraintChars = ""
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
@@ -212,6 +215,8 @@ class Ui_MainWindow(QtGui.QWidget):
         self.label_amntMemory.setText(_translate("MainWindow", "amount of memory required:", None))
         self.linetext_custom.setEnabled(False)
         self.linetext_mandatory.setEnabled(False)
+        self.linetext_amntMemory.setEnabled(False)
+        self.linetext_amntPwd.setEnabled(False)
 
     def setUpEvents(self):
         # CHECKBOXES
@@ -229,6 +234,7 @@ class Ui_MainWindow(QtGui.QWidget):
 
         # SPINBOXES
         self.spinbox_lenPwd.editingFinished.connect(self.setPwdLen)
+        #self.spinBox_beginningConstraint.editingFinished.connect(self.setBeginningConstraint)
 
         # TODO
 
