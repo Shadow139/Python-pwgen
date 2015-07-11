@@ -35,9 +35,6 @@ class Ui_MainWindow(QtGui.QWidget):
         self.setupUi(self)
         self.saveInFile = False
         self.outputStream = False
-        self.tempConstraintBegin = 1
-        self.tempConstraintLen = 1
-        self.tempConstraintChars = ""
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
@@ -244,11 +241,10 @@ class Ui_MainWindow(QtGui.QWidget):
 
         # SPINBOXES
         self.spinbox_lenPwd.editingFinished.connect(self.setPwdLen)
-        #self.spinBox_beginningConstraint.editingFinished.connect(self.setBeginningConstraint)
 
         #Buttons
         self.button_fileChooser.clicked.connect(self.setFile)
-        # TODO
+        self.button_addConstraint.clicked.connect(self.addConstraint)
 
     # YES - now it actually it does work
     def setPwdLen(self):
@@ -315,7 +311,68 @@ class Ui_MainWindow(QtGui.QWidget):
 
     # YES - and if not...wiktor did it
     def setFile(self):
-        print("traLaLa")
+        #print("traLaLa")
         self.linetext_fileChooser.setText(QFileDialog.getOpenFileName())
 
+    def addConstraint(self):
+        print("addButtonClicked")
+        if self.slider_lenConstraint.text() + self.spinBox_beginningConstraint.text() <= self.pwdLength and self.checkCharsetStuff(self.linetxt_allowedChars.text()):
+            constraint = self.buildConstraint(self.linetxt_allowedChars.text())
+            # addToList!!!
+        else:
+            QMessageBox.warning(self,"You Idiot", "do it right")
 
+    def checkCharsetStuff(self,string):
+        charSet = self.charSet.getCharSet()
+        i = 0
+        while i < len(string):
+            if string[i] == "{":
+                i += 1
+                while not string[i] == "}":
+                    if string[i] not in charSet:
+                        QMessageBox.warning(self,"...", "please stop being so stupid. you cannot use letters that you do not have in your charset.")
+                        return False
+                    i += 1
+                    if i > len(string):
+                        QMessageBox.warning(self,"WHY", "you need a '}'.. but i guess you're too stupid for that")
+                i += 1 # sollte das da sein...?
+            if string[i] == "A" and not self.charSet.alphaBig:
+                QMessageBox.warning(self,"You Idiot", "uppercase can't be included if it's not in the charset")
+                self.linetxt_allowedChars.setText("")
+                return False
+            if string[i] == "a" and not self.charSet.alpha:
+                QMessageBox.warning(self,"You Idiot", "lowercase can't be included if it's not in the charset")
+                self.linetxt_allowedChars.setText("")
+                return False
+            if string[i] == "0" and not self.charSet.num:
+                QMessageBox.warning(self,"You Idiot", "numbers can't be included if they are not in the charset")
+                self.linetxt_allowedChars.setText("")
+                return False
+            if string[i] == "#" and (self.charSet.custom == [] or self.checkbox_custom.checkState() == 0):
+                QMessageBox.warning(self,"?", "you know that you are not using any custom characters?")
+                self.linetxt_allowedChars.setText("")
+                return False
+        return True
+
+    def buildConstraint(self,string):
+        charSet = ""
+        alpha = False
+        alphaBig = False
+        num = False
+        custom = False
+        i = 0
+        while i < len(string):
+            if string[i] == "{":
+                while not string[i] == "}":
+                    i += 1
+                    charSet = self.charSet + string[i]
+                i += 1 # richtig??
+            if string[i] == "A" and not alphaBig:
+                charSet += self.charSet.alphaBigF
+            if string[i] == "a" and not alpha:
+                charSet += self.charSet.alphaF
+            if string[i] == "0" and not num:
+                charSet = charSet + self.charSet.numF
+            if string[i] == "#" and not custom:
+                charSet = charSet + self.charSet.custom
+        return charSet
