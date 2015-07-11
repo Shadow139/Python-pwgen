@@ -294,8 +294,7 @@ class Ui_MainWindow(QtGui.QWidget):
 
     # YES - it does right things.
     def setSaveFile(self):
-        self.pwdLength = (False if self.checkbox_saveInFile.checkState() == 0 else True)
-        #print(self.pwdLength)
+        self.saveInFile = (False if self.checkbox_saveInFile.checkState() == 0 else True)
 
     # YES - wooorking
     def setOutputStream(self):
