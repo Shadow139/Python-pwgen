@@ -7,7 +7,7 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt4 import QtCore, QtGui
-from PyQt4.QtGui import QMessageBox
+from PyQt4.QtGui import QMessageBox, QFileDialog
 import newTryBecause.Permutations
 import newTryBecause.CharacterSet
 
@@ -236,6 +236,8 @@ class Ui_MainWindow(QtGui.QWidget):
         self.spinbox_lenPwd.editingFinished.connect(self.setPwdLen)
         #self.spinBox_beginningConstraint.editingFinished.connect(self.setBeginningConstraint)
 
+        #Buttons
+        self.button_fileChooser.clicked.connect(self.setFile)
         # TODO
 
     # YES - now it actually it does work
@@ -303,3 +305,6 @@ class Ui_MainWindow(QtGui.QWidget):
 
     def setFile(self):
         print("traLaLa")
+        self.linetext_fileChooser.setText(QFileDialog.getOpenFileName())
+
+
