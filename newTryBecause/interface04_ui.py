@@ -220,6 +220,13 @@ class Ui_MainWindow(QtGui.QWidget):
         self.linetext_mandatory.setEnabled(False)
         self.linetext_amntMemory.setEnabled(False)
         self.linetext_amntPwd.setEnabled(False)
+        
+        self.spinBox_beginningConstraint.setValue(1)
+        self.spinBox_beginningConstraint.setMinimum(1)
+        self.spinBox_beginningConstraint.setMaximum(50)
+        self.slider_lenConstraint.setValue(1)
+        self.slider_lenConstraint.setMinimum(1)
+        self.slider_lenConstraint.setMaximum(50)
 
     def setUpEvents(self):
         # CHECKBOXES
