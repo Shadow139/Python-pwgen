@@ -347,22 +347,14 @@ class Ui_MainWindow(QtGui.QWidget):
                 self.dictSpecialConstraints[x-1] = self.linetxt_allowedChars.text()
                 #print(x)
                 #print(constraint)
-                print(self.dictSpecialConstraints)
-                # addToList!!!
+                #print(self.dictSpecialConstraints)
                 #self.listview_constraints.addItem("lala")
                 x += 1
             for i in self.dictSpecialConstraints.keys():
-                ###############################################################################
-                ###############################################################################
-                ################################### PROBLEM ###################################
-                ###############################################################################
-                ###############################################################################
-                #self.listview_constraints.addItem("%s: "+self.dictSpecialConstraints[i] % (i+1))
                 self.listview_constraints.addItem("{0}: ".format(i+1) + self.dictSpecialConstraints[i])
-                ###############################################################################
-                ###############################################################################
-                ###############################################################################
-                ###############################################################################
+                self.slider_lenConstraint.setValue(1)
+                self.spinBox_beginningConstraint.setValue(1)
+                self.linetxt_allowedChars.setText("")
         else:
             if self.slider_lenConstraint.value()-1 + self.spinBox_beginningConstraint.value() > self.pwdLength:
                 QMessageBox.warning(self,"seriously?", "the password is too short for that..")
