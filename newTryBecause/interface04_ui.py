@@ -81,7 +81,7 @@ class Ui_MainWindow(QtGui.QWidget):
         self.label_constraints = QtGui.QLabel(self.verticalLayoutWidget_2)
         self.label_constraints.setObjectName(_fromUtf8("label_constraints"))
         self.listOfConstraints.addWidget(self.label_constraints)
-        self.listview_constraints = QtGui.QListView(self.verticalLayoutWidget_2)
+        self.listview_constraints = QtGui.QListWidget(self.verticalLayoutWidget_2)
         self.listview_constraints.setObjectName(_fromUtf8("listview_constraints"))
         self.listOfConstraints.addWidget(self.listview_constraints)
         self.verticalLayoutWidget_3 = QtGui.QWidget(self.THEWINDOW)
@@ -339,16 +339,29 @@ class Ui_MainWindow(QtGui.QWidget):
             constraint = self.buildConstraint(self.linetxt_allowedChars.text())
             #print(constraint)
             x = self.spinBox_beginningConstraint.value()
-            print(x)
-            print(self.slider_lenConstraint.value())
+            self.listview_constraints.clear()
+            #print(x)
+            #print(self.slider_lenConstraint.value())
             while x <= self.slider_lenConstraint.value()-1+self.spinBox_beginningConstraint.value():
                 self.constraints.setConstraint(x,constraint)
-                self.dictSpecialConstraints[x-1] = constraint
+                self.dictSpecialConstraints[x-1] = self.linetxt_allowedChars.text()
                 #print(x)
                 #print(constraint)
                 print(self.dictSpecialConstraints)
                 # addToList!!!
+                #self.listview_constraints.addItem("lala")
                 x += 1
+            for i in self.dictSpecialConstraints.keys():
+                ###############################################################################
+                ###############################################################################
+                ################################### PROBLEM ###################################
+                ###############################################################################
+                ###############################################################################
+                self.listview_constraints.addItem("%s: "+self.dictSpecialConstraints[i] % (i+1))
+                ###############################################################################
+                ###############################################################################
+                ###############################################################################
+                ###############################################################################
         else:
             if self.slider_lenConstraint.value()-1 + self.spinBox_beginningConstraint.value() > self.pwdLength:
                 QMessageBox.warning(self,"seriously?", "the password is too short for that..")
@@ -356,6 +369,7 @@ class Ui_MainWindow(QtGui.QWidget):
                 self.spinBox_beginningConstraint.setValue(1)
             QMessageBox.warning(self,"You Idiot", "do it right")
 
+    # das koennte schoener sein. machs schoener...
     def checkCharsetStuff(self,string):
         charSet = self.charSet.getCharSet()
         i = 0
@@ -394,6 +408,7 @@ class Ui_MainWindow(QtGui.QWidget):
             i += 1
         return True
 
+    # das koennte auch viel netter sein
     def buildConstraint(self,string):
         charSet = ""
         alpha = False
