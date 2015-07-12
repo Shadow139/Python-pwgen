@@ -430,12 +430,20 @@ class Ui_MainWindow(QtGui.QWidget):
     def deleteConstraint(self):
         print("delete-button clicked")
         item = self.listview_constraints.takeItem(self.listview_constraints.currentRow())
+        print(item.text())
         item = None
-        """
-        indexes = self.listview_constraints.selectedItems()
-        if indexes == []:
-            QMessageBox.warning(self,"The other left!", "you have to select something to delete it!")
-       else:
-            for i in indexes:
-                print("should do things")
-        """
+
+        print("vorher",self.dictSpecialConstraints)
+
+        tempConstraints = {}
+
+        for index in range(self.listview_constraints.count()):
+            temp = self.listview_constraints.item(index)
+            constraint_index = temp.text()[0]
+            constraint_value = temp.text()[3]
+            print(index,constraint_index)
+            tempConstraints[int(constraint_index) -1] = self.buildConstraint(constraint_value)
+
+
+        self.dictSpecialConstraints = tempConstraints
+        print("nachher",self.dictSpecialConstraints)
