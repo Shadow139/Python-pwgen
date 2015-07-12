@@ -95,10 +95,6 @@ class Constraints:
 
     def __init__(self,pwlength,characterSet):
         self.constraints = []
-        i = 0
-        while i < pwlength:
-            self.constraints.append("")
-            i += 1
         self.pattern = re.compile("^[aA0#$]+$")
         self.pwlength = pwlength
         self.characterSet = characterSet
@@ -107,12 +103,23 @@ class Constraints:
 
     def initConstraints(self):
         charSet = self.characterSet.getCharSet()
+        self.constraints = []
+        i = 0
+        while i < self.pwlength:
+            self.constraints.append("")
+            i += 1
         i = 0
         while i < self.pwlength:
             self.constraints[i] = charSet
             #print(self.constraints)
             i += 1
         #print(self.constraints)
+
+    def updateConstraints(self,pwlength,dictSpecials):
+        self.pwlength = pwlength
+        self.initConstraints()
+        for key in dictSpecials.keys():
+            self.constraints[key] = dictSpecials[key]
 
     def changeConstraint(self,id,string):
         if id >= self.pwlength:
@@ -145,3 +152,6 @@ class Constraints:
             #print(self.constraints)
         else:
             raise ValueError("wrong input. idiots!! how did this happen. =(")
+
+    def setConstraint(self,id,string):
+        self.constraints[id-1] = string

@@ -35,6 +35,7 @@ class Ui_MainWindow(QtGui.QWidget):
         self.setupUi(self)
         self.saveInFile = False
         self.outputStream = False
+        self.dictSpecialConstraints = {}
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
@@ -249,23 +250,31 @@ class Ui_MainWindow(QtGui.QWidget):
 
     # YES - now it actually it does work
     def setPwdLen(self):
-        self.pwdLength = self.spinbox_lenPwd.text()
-        print(self.pwdLength)
+        self.pwdLength = self.spinbox_lenPwd.value()
+        #print(self.pwdLength)
+        self.constraints.updateConstraints(self.pwdLength,self.dictSpecialConstraints)
+        #print(self.constraints.constraints)
 
     # YES - it's fine
     def setAlpha(self):
         self.charSet.setAlpha(False if self.checkbox_lowerCase.checkState() == 0 else True)
         #print(self.charSet.alpha)
+        self.constraints.updateConstraints(self.pwdLength,self.dictSpecialConstraints)
+        #print(self.constraints.constraints)
 
     # YES - works
     def setAlphaBig(self):
         self.charSet.setAlphaBig(False if self.checkbox_upperCase.checkState() == 0 else True)
         #print(self.charSet.alphaBig)
+        self.constraints.updateConstraints(self.pwdLength,self.dictSpecialConstraints)
+        #print(self.constraints.constraints)
 
     # YES - it's okay
     def setNum(self):
         self.charSet.setNum(False if self.ceckbox_numbers.checkState() == 0 else True)
-        print(self.charSet.num)
+        #print(self.charSet.num)
+        self.constraints.updateConstraints(self.pwdLength,self.dictSpecialConstraints)
+        #print(self.constraints.constraints)
 
     # YES - it disables and enables just right.. =D
     def enableCustom(self):
@@ -273,6 +282,8 @@ class Ui_MainWindow(QtGui.QWidget):
         if not self.linetext_custom.isEnabled():
             self.linetext_custom.setText("")
             self.charSet.setCustom("")
+            self.constraints.updateConstraints(self.pwdLength,self.dictSpecialConstraints)
+            #print(self.constraints.constraints)
 
     # YES - works too
     def setCustom(self):
@@ -280,6 +291,8 @@ class Ui_MainWindow(QtGui.QWidget):
         #print(self.linetxt_custom.text())
         self.linetext_custom.setText(self.charSet.getCustom())
         #print(self.charSet.getCharSet())
+        self.constraints.updateConstraints(self.pwdLength,self.dictSpecialConstraints)
+        #print(self.constraints.constraints)
 
     # YES - this thing works too
     def enableMandatory(self):
@@ -287,6 +300,8 @@ class Ui_MainWindow(QtGui.QWidget):
         if not self.linetext_mandatory.isEnabled():
             self.linetext_mandatory.setText("")
             self.charSet.setMandatory("")
+            self.constraints.updateConstraints(self.pwdLength,self.dictSpecialConstraints)
+            #print(self.constraints.constraints)
 
     # YES - at least I think...
     def setMandatory(self):
@@ -299,7 +314,9 @@ class Ui_MainWindow(QtGui.QWidget):
         else:
             #print("wrong")
             QMessageBox.warning(self,"You Idiot", "it is not possible to have more mandatory characters than your password is long...")
-        print(self.charSet.mandatory)
+        #print(self.charSet.mandatory)
+        self.constraints.updateConstraints(self.pwdLength,self.dictSpecialConstraints)
+        #print(self.constraints.constraints)
 
     # YES - it does right things.
     def setSaveFile(self):
@@ -319,7 +336,15 @@ class Ui_MainWindow(QtGui.QWidget):
         #print("addButtonClicked")
         if self.slider_lenConstraint.value()-1 + self.spinBox_beginningConstraint.value() <= self.pwdLength and self.checkCharsetStuff(self.linetxt_allowedChars.text()):
             constraint = self.buildConstraint(self.linetxt_allowedChars.text())
-            # addToList!!!
+            x = self.spinBox_beginningConstraint.value()
+            while x <= self.slider_lenConstraint.value():
+                self.constraints.setConstraint(x,constraint)
+                self.dictSpecialConstraints[x-1] = constraint
+                #print(x)
+                #print(constraint)
+                print(self.dictSpecialConstraints)
+                # addToList!!!
+                x += 1
         else:
             if self.slider_lenConstraint.value()-1 + self.spinBox_beginningConstraint.value() > self.pwdLength:
                 QMessageBox.warning(self,"seriously?", "the password is too short for that..")
@@ -354,7 +379,7 @@ class Ui_MainWindow(QtGui.QWidget):
                 QMessageBox.warning(self,"You Idiot", "numbers can't be included if they are not in the charset")
                 self.linetxt_allowedChars.setText("")
                 return False
-            elif string[i] == "#" and (self.charSet.custom == [] or self.checkbox_custom.checkState() == 0):
+            elif string[i] == "#" and (self.charSet.custom == "" or self.checkbox_custom.checkState() == 0):
                 QMessageBox.warning(self,"?", "you know that you are not using any custom characters?")
                 self.linetxt_allowedChars.setText("")
                 return False
