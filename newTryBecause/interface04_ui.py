@@ -331,6 +331,7 @@ class Ui_MainWindow(QtGui.QWidget):
         charSet = self.charSet.getCharSet()
         i = 0
         while i < len(string):
+            #print("enter")
             if string[i] == "{":
                 i += 1
                 while not string[i] == "}":
@@ -357,10 +358,11 @@ class Ui_MainWindow(QtGui.QWidget):
                 QMessageBox.warning(self,"?", "you know that you are not using any custom characters?")
                 self.linetxt_allowedChars.setText("")
                 return False
-            else:
+            elif string[i] != "A" and string[i] != "a" and string[i] != "0" and string[i] != "#":
                 QMessageBox.warning(self,"You are a puking frog", "i dont even know what you are trying to achieve with this input")
                 self.linetxt_allowedChars.setText("")
                 return False
+            i += 1
         return True
 
     def buildConstraint(self,string):
@@ -384,4 +386,5 @@ class Ui_MainWindow(QtGui.QWidget):
                 charSet = charSet + self.charSet.numF
             elif string[i] == "#" and not custom:
                 charSet = charSet + self.charSet.custom
+            i += 1
         return charSet
