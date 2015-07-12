@@ -335,9 +335,13 @@ class Ui_MainWindow(QtGui.QWidget):
     def addConstraint(self):
         #print("addButtonClicked")
         if self.slider_lenConstraint.value()-1 + self.spinBox_beginningConstraint.value() <= self.pwdLength and self.checkCharsetStuff(self.linetxt_allowedChars.text()):
+            #print("i got here")
             constraint = self.buildConstraint(self.linetxt_allowedChars.text())
+            #print(constraint)
             x = self.spinBox_beginningConstraint.value()
-            while x <= self.slider_lenConstraint.value():
+            print(x)
+            print(self.slider_lenConstraint.value())
+            while x <= self.slider_lenConstraint.value()-1+self.spinBox_beginningConstraint.value():
                 self.constraints.setConstraint(x,constraint)
                 self.dictSpecialConstraints[x-1] = constraint
                 #print(x)
