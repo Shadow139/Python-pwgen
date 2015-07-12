@@ -247,6 +247,7 @@ class Ui_MainWindow(QtGui.QWidget):
         #Buttons
         self.button_fileChooser.clicked.connect(self.setFile)
         self.button_addConstraint.clicked.connect(self.addConstraint)
+        self.button_deleteConstraint.clicked.connect(self.deleteConstraint)
 
     # YES - now it actually it does work
     def setPwdLen(self):
@@ -425,3 +426,12 @@ class Ui_MainWindow(QtGui.QWidget):
                 charSet = charSet + self.charSet.custom
             i += 1
         return charSet
+
+    def deleteConstraint(self):
+        #print("delete-button clicked")
+        indexes = self.listview_constraints.selectedItems()
+        if indexes == []:
+            QMessageBox.warning(self,"The other left!", "you have to select something to delete it!")
+        else:
+            for i in indexes:
+                print("should do things")
