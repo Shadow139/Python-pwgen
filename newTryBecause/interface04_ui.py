@@ -447,3 +447,4 @@ class Ui_MainWindow(QtGui.QWidget):
 
         self.dictSpecialConstraints = tempConstraints
         print("nachher",self.dictSpecialConstraints)
+        self.constraints.updateConstraints(self.pwdLength,self.dictSpecialConstraints)
