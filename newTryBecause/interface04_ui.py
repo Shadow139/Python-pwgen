@@ -428,12 +428,12 @@ class Ui_MainWindow(QtGui.QWidget):
         return charSet
 
     def deleteConstraint(self):
-        print("delete-button clicked")
+        #print("delete-button clicked")
         item = self.listview_constraints.takeItem(self.listview_constraints.currentRow())
-        print(item.text())
+        #print(item.text())
         item = None
 
-        print("vorher",self.dictSpecialConstraints)
+        #print("vorher",self.dictSpecialConstraints)
 
         tempConstraints = {}
 
@@ -446,5 +446,6 @@ class Ui_MainWindow(QtGui.QWidget):
 
 
         self.dictSpecialConstraints = tempConstraints
-        print("nachher",self.dictSpecialConstraints)
+        #print("nachher",self.dictSpecialConstraints)
         self.constraints.updateConstraints(self.pwdLength,self.dictSpecialConstraints)
+        print(self.constraints.constraints)
