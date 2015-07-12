@@ -49,6 +49,7 @@ class Ui_MainWindow(QtGui.QWidget):
         self.charSetInput.setObjectName(_fromUtf8("charSetInput"))
         self.checkbox_lowerCase = QtGui.QCheckBox(self.verticalLayoutWidget)
         self.checkbox_lowerCase.setObjectName(_fromUtf8("checkbox_lowerCase"))
+        self.checkbox_lowerCase.setToolTip("This adds the lowercase characters to your character set")
         self.charSetInput.addWidget(self.checkbox_lowerCase)
         self.checkbox_upperCase = QtGui.QCheckBox(self.verticalLayoutWidget)
         self.checkbox_upperCase.setObjectName(_fromUtf8("checkbox_upperCase"))
