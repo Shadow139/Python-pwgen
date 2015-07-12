@@ -215,8 +215,9 @@ class Ui_MainWindow(QtGui.QWidget):
         self.label_amntMemory.setText(_translate("MainWindow", "amount of memory required:", None))
         self.linetext_custom.setEnabled(False)
         self.linetext_mandatory.setEnabled(False)
-        self.linetext_amntMemory.setEnabled(False)
-        self.linetext_amntPwd.setEnabled(False)
+
+        self.linetext_amntMemory.setReadOnly(True)
+        self.linetext_amntPwd.setReadOnly(True)
         
         self.spinBox_beginningConstraint.setValue(1)
         self.spinBox_beginningConstraint.setMinimum(1)
@@ -315,11 +316,15 @@ class Ui_MainWindow(QtGui.QWidget):
         self.linetext_fileChooser.setText(QFileDialog.getOpenFileName())
 
     def addConstraint(self):
-        print("addButtonClicked")
-        if self.slider_lenConstraint.text() + self.spinBox_beginningConstraint.text() <= self.pwdLength and self.checkCharsetStuff(self.linetxt_allowedChars.text()):
+        #print("addButtonClicked")
+        if self.slider_lenConstraint.value()-1 + self.spinBox_beginningConstraint.value() <= self.pwdLength and self.checkCharsetStuff(self.linetxt_allowedChars.text()):
             constraint = self.buildConstraint(self.linetxt_allowedChars.text())
             # addToList!!!
         else:
+            if self.slider_lenConstraint.value()-1 + self.spinBox_beginningConstraint.value() > self.pwdLength:
+                QMessageBox.warning(self,"seriously?", "the password is too short for that..")
+                self.slider_lenConstraint.setValue(1)
+                self.spinBox_beginningConstraint.setValue(1)
             QMessageBox.warning(self,"You Idiot", "do it right")
 
     def checkCharsetStuff(self,string):
@@ -336,20 +341,24 @@ class Ui_MainWindow(QtGui.QWidget):
                     if i > len(string):
                         QMessageBox.warning(self,"WHY", "you need a '}'.. but i guess you're too stupid for that")
                 i += 1 # sollte das da sein...?
-            if string[i] == "A" and not self.charSet.alphaBig:
+            elif string[i] == "A" and not self.charSet.alphaBig:
                 QMessageBox.warning(self,"You Idiot", "uppercase can't be included if it's not in the charset")
                 self.linetxt_allowedChars.setText("")
                 return False
-            if string[i] == "a" and not self.charSet.alpha:
+            elif string[i] == "a" and not self.charSet.alpha:
                 QMessageBox.warning(self,"You Idiot", "lowercase can't be included if it's not in the charset")
                 self.linetxt_allowedChars.setText("")
                 return False
-            if string[i] == "0" and not self.charSet.num:
+            elif string[i] == "0" and not self.charSet.num:
                 QMessageBox.warning(self,"You Idiot", "numbers can't be included if they are not in the charset")
                 self.linetxt_allowedChars.setText("")
                 return False
-            if string[i] == "#" and (self.charSet.custom == [] or self.checkbox_custom.checkState() == 0):
+            elif string[i] == "#" and (self.charSet.custom == [] or self.checkbox_custom.checkState() == 0):
                 QMessageBox.warning(self,"?", "you know that you are not using any custom characters?")
+                self.linetxt_allowedChars.setText("")
+                return False
+            else:
+                QMessageBox.warning(self,"You are a puking frog", "i dont even know what you are trying to achieve with this input")
                 self.linetxt_allowedChars.setText("")
                 return False
         return True
@@ -369,10 +378,10 @@ class Ui_MainWindow(QtGui.QWidget):
                 i += 1 # richtig??
             if string[i] == "A" and not alphaBig:
                 charSet += self.charSet.alphaBigF
-            if string[i] == "a" and not alpha:
+            elif string[i] == "a" and not alpha:
                 charSet += self.charSet.alphaF
-            if string[i] == "0" and not num:
+            elif string[i] == "0" and not num:
                 charSet = charSet + self.charSet.numF
-            if string[i] == "#" and not custom:
+            elif string[i] == "#" and not custom:
                 charSet = charSet + self.charSet.custom
         return charSet
