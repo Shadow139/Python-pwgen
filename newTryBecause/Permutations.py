@@ -39,7 +39,7 @@ class Permutations:
             return
         if lenOfPerm == self.pwlength and len(mandatory) == 0:
             #print("pwd:")
-            print(permutationRightNow)
+            #print(permutationRightNow)
             if self.writeToFile:
                 self.file.write(permutationRightNow+"\n")
             if self.outputStream:

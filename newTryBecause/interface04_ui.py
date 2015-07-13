@@ -319,6 +319,7 @@ class Ui_MainWindow(QtGui.QWidget):
         else:
             #print("wrong")
             QMessageBox.warning(self,"You Idiot", "it is not possible to have more mandatory characters than your password is long...")
+            self.linetext_mandatory.setText("")
         #print(self.charSet.mandatory)
         self.constraints.updateConstraints(self.pwdLength,self.dictSpecialConstraints)
         #print(self.constraints.constraints)
