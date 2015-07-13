@@ -32,7 +32,7 @@ class Permutations:
         #print(self.alphabet)
         #print(self.pwlength)
         if not self.checkShit(permutationRightNow):
-            print("checkShit")
+            #print("checkShit")
             return
         if lenOfPerm == self.pwlength and len(mandatory) == 0:
             #print("pwd:")
@@ -61,13 +61,13 @@ class Permutations:
 
             perm = permutationRightNow
             perm += i
-            print("perm")
-            print(perm)
+            #print("perm")
+            #print(perm)
             self.permuteWithTree_Uli(lenOfPerm+1,i,count,perm,maxRep,newMan)
 
     def checkShit(self,string):
-        print("lenString: {l}".format(l=len(string)))
-        print("string: {s}".format(s=string))
+        #print("lenString: {l}".format(l=len(string)))
+        #print("string: {s}".format(s=string))
         if len(string) == 0:
             return True
         x = len(string)-1

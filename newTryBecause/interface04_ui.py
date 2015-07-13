@@ -474,5 +474,6 @@ class Ui_MainWindow(QtGui.QWidget):
         #print()
         perm.permuteWithTree_Uli(0,"",0,"",self.maxrep,self.charSet.mandatory)
         #perm.permuteWithTree_Uli(0,"",0,"",self.maxrep,cset.mandatory)
+        file.close()
 
-        print("end")
+        #print("end")
