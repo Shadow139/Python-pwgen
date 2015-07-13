@@ -27,6 +27,9 @@ class Permutations:
         self.outputStream = bool
 
     def permuteWithTree_Uli(self,lenOfPerm,lastChar,repetitionCount,permutationRightNow,maxRep,mandatory):
+        #if lenOfPerm == 2:
+        #    print(mandatory)
+        #print(mandatory)
         #print("enter")
         #print("alpha:")
         #print(self.alphabet)
@@ -36,7 +39,7 @@ class Permutations:
             return
         if lenOfPerm == self.pwlength and len(mandatory) == 0:
             #print("pwd:")
-            #print(permutationRightNow)
+            print(permutationRightNow)
             if self.writeToFile:
                 self.file.write(permutationRightNow+"\n")
             if self.outputStream:

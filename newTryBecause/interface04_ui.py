@@ -314,6 +314,7 @@ class Ui_MainWindow(QtGui.QWidget):
                 self.charSet.setMandatory(self.linetext_mandatory.text())
             except ValueError as e:
                 QMessageBox.warning(self,"ValueError!", str(e))
+                self.linetext_mandatory.setText("")
             #print("right")
         else:
             #print("wrong")
@@ -472,8 +473,10 @@ class Ui_MainWindow(QtGui.QWidget):
         #print(self.maxrep)
         #print(cset.alpha,cset.alphaBig,cset.num,cset.custom,cset.mandatory)
         #print()
+        #print(self.charSet.mandatory)
         perm.permuteWithTree_Uli(0,"",0,"",self.maxrep,self.charSet.mandatory)
         #perm.permuteWithTree_Uli(0,"",0,"",self.maxrep,cset.mandatory)
         file.close()
+        print("finished")
 
         #print("end")
