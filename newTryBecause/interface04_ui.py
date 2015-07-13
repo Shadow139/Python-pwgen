@@ -36,6 +36,7 @@ class Ui_MainWindow(QtGui.QWidget):
         self.saveInFile = False
         self.outputStream = False
         self.dictSpecialConstraints = {}
+        self.maxrep = 5
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
@@ -249,6 +250,7 @@ class Ui_MainWindow(QtGui.QWidget):
         self.button_fileChooser.clicked.connect(self.setFile)
         self.button_addConstraint.clicked.connect(self.addConstraint)
         self.button_deleteConstraint.clicked.connect(self.deleteConstraint)
+        self.button_startButton.clicked.connect(self.doIt)
 
     # YES - now it actually it does work
     def setPwdLen(self):
@@ -450,3 +452,15 @@ class Ui_MainWindow(QtGui.QWidget):
         #print("nachher",self.dictSpecialConstraints)
         self.constraints.updateConstraints(self.pwdLength,self.dictSpecialConstraints)
         #print(self.constraints.constraints)
+
+    def doIt(self):
+        #print("DO IT!")
+        try:
+            file = open(self.linetext_fileChooser.text(),'w')
+        except IOError as e:
+            QMessageBox.warning(self,"You fuck", "shitty filepath")
+            return
+        perm = newTryBecause.Permutations.Permutations(file,self.pwdLength,self.constraints,self.charSet)
+        perm.setWriteToFile(self.saveInFile)
+        perm.setOutputStream(self.outputStream)
+        perm.permuteWithTree_Uli(self.pwdLength,"",0,"",self.maxrep,self.charSet.mandatory)

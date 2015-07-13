@@ -17,6 +17,14 @@ class Permutations:
         #print("alphabet: {a}".format(a=self.alphabet))
         self.constraints = constraints.constraints
         #print("constraints: {c}".format(c=self.constraints))
+        self.writeToFile = False
+        self.outputStream = False
+
+    def setWriteToFile(self,bool):
+        self.writeToFile = bool
+
+    def setOutputStream(self,bool):
+        self.outputStream = bool
 
     def permuteWithTree_Uli(self,lenOfPerm,lastChar,repetitionCount,permutationRightNow,maxRep,mandatory):
         #print("enter")
@@ -24,8 +32,11 @@ class Permutations:
             return
         if lenOfPerm == self.pwlength and len(mandatory) == 0:
             #print("pwd:")
-            print(permutationRightNow)
-            #self.file.write(permutationRightNow+"\n")
+            #print(permutationRightNow)
+            if self.writeToFile:
+                self.file.write(permutationRightNow+"\n")
+            if self.outputStream:
+                pass
             return
         for i in self.alphabet:
             count = repetitionCount
