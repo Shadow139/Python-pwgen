@@ -27,8 +27,9 @@ class Permutations:
         self.outputStream = bool
 
     def permuteWithTree_Uli(self,lenOfPerm,lastChar,repetitionCount,permutationRightNow,maxRep,mandatory):
-        #print("enter")
+        print("enter")
         if not self.checkShit(permutationRightNow):
+            print("checkShit")
             return
         if lenOfPerm == self.pwlength and len(mandatory) == 0:
             #print("pwd:")

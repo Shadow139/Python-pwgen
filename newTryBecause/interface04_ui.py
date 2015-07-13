@@ -461,7 +461,7 @@ class Ui_MainWindow(QtGui.QWidget):
             QMessageBox.warning(self,"You fuck", "shitty filepath")
             return
         print("start")
-        cset = newTryBecause.CharacterSet.CharacterSet(True,False,True,[],[])
+        cset = newTryBecause.CharacterSet.CharacterSet(True,False,True,"","")
         constr = newTryBecause.CharacterSet.Constraints(4,cset)
         #perm = newTryBecause.Permutations.Permutations(file,self.pwdLength,self.constraints,self.charSet)
         perm = newTryBecause.Permutations.Permutations(file,4,constr,cset)
