@@ -36,7 +36,6 @@ class Ui_MainWindow(QtGui.QWidget):
         self.saveInFile = False
         self.outputStream = False
         self.dictSpecialConstraints = {}
-        self.maxrep = 5
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
@@ -87,7 +86,7 @@ class Ui_MainWindow(QtGui.QWidget):
         self.listview_constraints.setObjectName(_fromUtf8("listview_constraints"))
         self.listOfConstraints.addWidget(self.listview_constraints)
         self.verticalLayoutWidget_3 = QtGui.QWidget(self.THEWINDOW)
-        self.verticalLayoutWidget_3.setGeometry(QtCore.QRect(9, 229, 371, 61))
+        self.verticalLayoutWidget_3.setGeometry(QtCore.QRect(9, 210, 371, 120))
         self.verticalLayoutWidget_3.setObjectName(_fromUtf8("verticalLayoutWidget_3"))
         self.lenOfPwdInput = QtGui.QVBoxLayout(self.verticalLayoutWidget_3)
         self.lenOfPwdInput.setObjectName(_fromUtf8("lenOfPwdInput"))
@@ -99,8 +98,20 @@ class Ui_MainWindow(QtGui.QWidget):
         self.spinbox_lenPwd.setMaximum(50)
         self.spinbox_lenPwd.setObjectName(_fromUtf8("spinbox_lenPwd"))
         self.lenOfPwdInput.addWidget(self.spinbox_lenPwd)
+
+
+        self.label_maxRep = QtGui.QLabel(self.verticalLayoutWidget_3)
+        self.label_maxRep.setObjectName(_fromUtf8("label_maxRep"))
+        self.lenOfPwdInput.addWidget(self.label_maxRep)
+
+
+        self.spinbox_maxRep = QtGui.QSpinBox(self.verticalLayoutWidget_3)
+        self.spinbox_maxRep.setMinimum(1)
+        self.spinbox_maxRep.setMaximum(50)
+        self.spinbox_maxRep.setObjectName(_fromUtf8("spinbox_maxRep"))
+        self.lenOfPwdInput.addWidget(self.spinbox_maxRep)
         self.verticalLayoutWidget_4 = QtGui.QWidget(self.THEWINDOW)
-        self.verticalLayoutWidget_4.setGeometry(QtCore.QRect(9, 299, 371, 101))
+        self.verticalLayoutWidget_4.setGeometry(QtCore.QRect(9, 315, 371, 101))
         self.verticalLayoutWidget_4.setObjectName(_fromUtf8("verticalLayoutWidget_4"))
         self.fileNameInput = QtGui.QVBoxLayout(self.verticalLayoutWidget_4)
         self.fileNameInput.setObjectName(_fromUtf8("fileNameInput"))
@@ -204,6 +215,7 @@ class Ui_MainWindow(QtGui.QWidget):
         self.checkbox_mandatory.setText(_translate("MainWindow", "mandatory", None))
         self.label_constraints.setText(_translate("MainWindow", "constraints:", None))
         self.label_lenPwd.setText(_translate("MainWindow", "length of password:", None))
+        self.label_maxRep.setText(_translate("MainWindow", "maximal repetition of same letter:", None))
         self.checkbox_saveInFile.setText(_translate("MainWindow", "save in a file", None))
         self.label_filePath.setText(_translate("MainWindow", "file:", None))
         self.button_fileChooser.setText(_translate("MainWindow", "....", None))
@@ -475,9 +487,10 @@ class Ui_MainWindow(QtGui.QWidget):
         #print(cset.alpha,cset.alphaBig,cset.num,cset.custom,cset.mandatory)
         #print()
         #print(self.charSet.mandatory)
-        perm.permuteWithTree_Uli(0,"",0,"",self.maxrep,self.charSet.mandatory)
+        perm.permuteWithTree_Uli(0,"",0,"",self.spinbox_maxRep.value(),self.charSet.mandatory)
         #perm.permuteWithTree_Uli(0,"",0,"",self.maxrep,cset.mandatory)
         file.close()
+        QMessageBox.information(self,"Congratz","You did it.0")
         print("finished")
 
         #print("end")
