@@ -490,7 +490,7 @@ class Ui_MainWindow(QtGui.QWidget):
         perm.permuteWithTree_Uli(0,"",0,"",self.spinbox_maxRep.value(),self.charSet.mandatory)
         #perm.permuteWithTree_Uli(0,"",0,"",self.maxrep,cset.mandatory)
         file.close()
-        QMessageBox.information(self,"Congratz","You did it.0")
-        print("finished")
+        QMessageBox.information(self,"Congratz","You did it.")
+        #print("finished")
 
         #print("end")
