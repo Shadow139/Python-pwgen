@@ -1,0 +1,18 @@
+gegeben:
+
+p = pwlength
+l = len(charSet)
+
+davon anzahl kombinationen:
+l^p
+
+dazu:
+constraints von wegen an welcher stelle welche sachen erlaubt sind -> eingrenzungen
+
+x1..xn = anzahl erlaubter chars auf der stelle
+
+davon anzahl kombinationen:
+product(xi) wobei xi aus x1..xn ist
+
+wiktor ist ein kleiner fuck.
+und ein trottel.
