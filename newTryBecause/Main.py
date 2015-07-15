@@ -1,10 +1,10 @@
 __author__ = 'twi'
 
 import itertools
-import newTryBecause.Permutations
-import newTryBecause.CharacterSet
+import Permutations
+import CharacterSet
 from tkinter import messagebox
-import newTryBecause.interface04_ui
+import interface04_ui
 from PyQt4 import QtCore, QtGui
 import sys
 
@@ -32,6 +32,6 @@ if __name__ == '__main__':
     perm.permuteWithTree_Uli(0,"",0,"",5,charSet.mandatory)
     """
     app = QtGui.QApplication(sys.argv)
-    ex = newTryBecause.interface04_ui.Ui_MainWindow()
+    ex = interface04_ui.Ui_MainWindow()
     ex.show()
     sys.exit(app.exec_())
