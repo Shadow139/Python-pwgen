@@ -35,3 +35,5 @@ if __name__ == '__main__':
     ex = interface04_ui.Ui_MainWindow()
     ex.show()
     sys.exit(app.exec_())
+
+
