@@ -2,8 +2,6 @@ import re
 import CharacterSet
 
 __author__ = 'twi'
-import itertools
-from tkinter import messagebox
 
 class Permutations:
 

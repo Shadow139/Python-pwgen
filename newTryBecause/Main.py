@@ -1,9 +1,5 @@
 __author__ = 'twi'
 
-import itertools
-import Permutations
-import CharacterSet
-from tkinter import messagebox
 import interface04_ui
 from PyQt4 import QtCore, QtGui
 import sys
