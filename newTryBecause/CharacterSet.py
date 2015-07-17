@@ -8,10 +8,6 @@ class CharacterSet:
     alphaBigF = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
     numF = '0123456789'
 
-    #alphaF = 'abcnopqrstuxyz'
-    #alphaBigF = 'ABCOPQRSTUVWXYZ'
-    #numF  = '0123789'
-
     alpha = False
     alphaBig = False
     num = False
@@ -73,13 +69,11 @@ class CharacterSet:
         charSet.extend(self.mandatory)
         return charSet
 
-    # for custom - if characters are not unique, then it will return a string where all characters exist once
     def checkIfUnique(self,string):
         newString = ""
         for x in string:
             if self.countLetter(newString,x) == 0:
                 newString = newString + x
-            #print(newString)
         return newString
 
     def countLetter(self,string,char):
@@ -99,7 +93,6 @@ class Constraints:
         self.pwlength = pwlength
         self.characterSet = characterSet
         self.initConstraints()
-        #print(self.constraints)
 
     def initConstraints(self):
         charSet = self.characterSet.getCharSet()
@@ -111,9 +104,7 @@ class Constraints:
         i = 0
         while i < self.pwlength:
             self.constraints[i] = charSet
-            #print(self.constraints)
             i += 1
-        #print(self.constraints)
 
     def updateConstraints(self,pwlength,dictSpecials):
         self.pwlength = pwlength
@@ -149,7 +140,6 @@ class Constraints:
                 else:
                     raise ValueError("you did the undoable..")
             self.constraints[id] = actualChars
-            #print(self.constraints)
         else:
             raise ValueError("wrong input. idiots!! how did this happen. =(")
 

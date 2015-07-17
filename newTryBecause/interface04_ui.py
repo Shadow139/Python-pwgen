@@ -198,15 +198,6 @@ class Ui_MainWindow(QtGui.QWidget):
         self.linetext_amntMemory = QtGui.QLineEdit(self.THEWINDOW)
         self.linetext_amntMemory.setGeometry(QtCore.QRect(260, 520, 113, 27))
         self.linetext_amntMemory.setObjectName(_fromUtf8("linetext_amntMemory"))
-        #MainWindow.setCentralWidget(self.THEWINDOW)
-        #self.MenuBar = QtGui.QMenuBar(MainWindow)
-        #self.MenuBar.setGeometry(QtCore.QRect(0, 0, 794, 25))
-        #self.MenuBar.setDefaultUp(False)
-        #self.MenuBar.setObjectName(_fromUtf8("MenuBar"))
-        #MainWindow.setMenuBar(self.MenuBar)
-        #self.statusbar = QtGui.QStatusBar(MainWindow)
-        #self.statusbar.setObjectName(_fromUtf8("statusbar"))
-        #MainWindow.setStatusBar(self.statusbar)
 
         self.setUpEvents()
 
@@ -265,68 +256,47 @@ class Ui_MainWindow(QtGui.QWidget):
         # SPINBOXES
         self.spinbox_lenPwd.editingFinished.connect(self.setPwdLen)
 
-        #Buttons
+        # BUTTONS
         self.button_fileChooser.clicked.connect(self.setFile)
         self.button_addConstraint.clicked.connect(self.addConstraint)
         self.button_deleteConstraint.clicked.connect(self.deleteConstraint)
         self.button_startButton.clicked.connect(self.doIt)
 
-    # YES - now it actually it does work
     def setPwdLen(self):
         self.pwdLength = self.spinbox_lenPwd.value()
-        #print(self.pwdLength)
         self.constraints.updateConstraints(self.pwdLength,self.dictSpecialConstraints)
-        #print(self.constraints.constraints)
 
-    # YES - it's fine
     def setAlpha(self):
         self.charSet.setAlpha(False if self.checkbox_lowerCase.checkState() == 0 else True)
-        #print(self.charSet.alpha)
         self.constraints.updateConstraints(self.pwdLength,self.dictSpecialConstraints)
-        #print(self.constraints.constraints)
 
-    # YES - works
     def setAlphaBig(self):
         self.charSet.setAlphaBig(False if self.checkbox_upperCase.checkState() == 0 else True)
-        #print(self.charSet.alphaBig)
         self.constraints.updateConstraints(self.pwdLength,self.dictSpecialConstraints)
-        #print(self.constraints.constraints)
 
-    # YES - it's okay
     def setNum(self):
         self.charSet.setNum(False if self.ceckbox_numbers.checkState() == 0 else True)
-        #print(self.charSet.num)
         self.constraints.updateConstraints(self.pwdLength,self.dictSpecialConstraints)
-        #print(self.constraints.constraints)
 
-    # YES - it disables and enables just right.. =D
     def enableCustom(self):
         self.linetext_custom.setEnabled(False if self.checkbox_custom.checkState() == 0 else True)
         if not self.linetext_custom.isEnabled():
             self.linetext_custom.setText("")
             self.charSet.setCustom("")
             self.constraints.updateConstraints(self.pwdLength,self.dictSpecialConstraints)
-            #print(self.constraints.constraints)
 
-    # YES - works too
     def setCustom(self):
         self.charSet.setCustom(self.linetext_custom.text())
-        #print(self.linetxt_custom.text())
         self.linetext_custom.setText(self.charSet.getCustom())
-        #print(self.charSet.getCharSet())
         self.constraints.updateConstraints(self.pwdLength,self.dictSpecialConstraints)
-        #print(self.constraints.constraints)
 
-    # YES - this thing works too
     def enableMandatory(self):
         self.linetext_mandatory.setEnabled(False if self.checkbox_mandatory.checkState() == 0 else True)
         if not self.linetext_mandatory.isEnabled():
             self.linetext_mandatory.setText("")
             self.charSet.setMandatory("")
             self.constraints.updateConstraints(self.pwdLength,self.dictSpecialConstraints)
-            #print(self.constraints.constraints)
 
-    # YES - at least I think...
     def setMandatory(self):
         if len(self.linetext_mandatory.text()) <= self.pwdLength:
             try:
@@ -334,46 +304,28 @@ class Ui_MainWindow(QtGui.QWidget):
             except ValueError as e:
                 QMessageBox.warning(self,"ValueError!", str(e))
                 self.linetext_mandatory.setText("")
-            #print("right")
         else:
-            #print("wrong")
             QMessageBox.warning(self,"You Idiot", "it is not possible to have more mandatory characters than your password is long...")
             self.linetext_mandatory.setText("")
-        #print(self.charSet.mandatory)
         self.constraints.updateConstraints(self.pwdLength,self.dictSpecialConstraints)
-        #print(self.constraints.constraints)
 
-    # YES - it does right things.
     def setSaveFile(self):
         self.saveInFile = (False if self.checkbox_saveInFile.checkState() == 0 else True)
 
-    # YES - wooorking
     def setOutputStream(self):
         self.outputStream = (False if self.checkbox_outputStream.checkState() == 0 else True)
-        #print(self.outputStream)
 
-    # YES - and if not...wiktor did it
     def setFile(self):
-        #print("traLaLa")
         self.linetext_fileChooser.setText(QFileDialog.getOpenFileName())
 
     def addConstraint(self):
-        #print("addButtonClicked")
         if self.slider_lenConstraint.value()-1 + self.spinBox_beginningConstraint.value() <= self.pwdLength and self.checkCharsetStuff(self.linetxt_allowedChars.text()):
-            #print("i got here")
             constraint = self.buildConstraint(self.linetxt_allowedChars.text())
-            #print(constraint)
             x = self.spinBox_beginningConstraint.value()
             self.listview_constraints.clear()
-            #print(x)
-            #print(self.slider_lenConstraint.value())
             while x <= self.slider_lenConstraint.value()-1+self.spinBox_beginningConstraint.value():
                 self.constraints.setConstraint(x,constraint)
                 self.dictSpecialConstraints[x-1] = self.linetxt_allowedChars.text()
-                #print(x)
-                #print(constraint)
-                #print(self.dictSpecialConstraints)
-                #self.listview_constraints.addItem("lala")
                 x += 1
             for i in self.dictSpecialConstraints.keys():
                 self.listview_constraints.addItem("{0}: ".format(i+1) + self.dictSpecialConstraints[i])
@@ -387,12 +339,10 @@ class Ui_MainWindow(QtGui.QWidget):
                 self.spinBox_beginningConstraint.setValue(1)
             QMessageBox.warning(self,"You Idiot", "do it right")
 
-    # das koennte schoener sein. machs schoener...
     def checkCharsetStuff(self,string):
         charSet = self.charSet.getCharSet()
         i = 0
         while i < len(string):
-            #print("enter")
             if string[i] == "{":
                 i += 1
                 while not string[i] == "}":
@@ -402,7 +352,7 @@ class Ui_MainWindow(QtGui.QWidget):
                     i += 1
                     if i > len(string):
                         QMessageBox.warning(self,"WHY", "you need a '}'.. but i guess you're too stupid for that")
-                i += 1 # sollte das da sein...?
+                i += 1
             elif string[i] == "A" and not self.charSet.alphaBig:
                 QMessageBox.warning(self,"You Idiot", "uppercase can't be included if it's not in the charset")
                 self.linetxt_allowedChars.setText("")
@@ -426,7 +376,6 @@ class Ui_MainWindow(QtGui.QWidget):
             i += 1
         return True
 
-    # das koennte auch viel netter sein
     def buildConstraint(self,string):
         charSet = ""
         alpha = False
@@ -452,54 +401,27 @@ class Ui_MainWindow(QtGui.QWidget):
         return charSet
 
     def deleteConstraint(self):
-        #print("delete-button clicked")
         item = self.listview_constraints.takeItem(self.listview_constraints.currentRow())
-        #print(item.text())
         item = None
-
-        #print("vorher",self.dictSpecialConstraints)
-
         tempConstraints = {}
-
         for index in range(self.listview_constraints.count()):
             temp = self.listview_constraints.item(index)
             constraint_index = temp.text()[0]
             constraint_value = temp.text()[3]
             print(index,constraint_index)
             tempConstraints[int(constraint_index) -1] = self.buildConstraint(constraint_value)
-
-
         self.dictSpecialConstraints = tempConstraints
-        #print("nachher",self.dictSpecialConstraints)
         self.constraints.updateConstraints(self.pwdLength,self.dictSpecialConstraints)
-        #print(self.constraints.constraints)
 
     def doIt(self):
-        #print("DO IT!")
         try:
             file = open("test.txt",'w')
         except IOError as e:
             QMessageBox.warning(self,"You fuck", "shitty filepath")
             return
-        #print("start")
-        #cset = newTryBecause.CharacterSet.CharacterSet(True,False,True,"","")
-        #constr = newTryBecause.CharacterSet.Constraints(4,cset)
         perm = Permutations.Permutations(file,self.pwdLength,self.constraints,self.charSet)
-        #perm = newTryBecause.Permutations.Permutations(file,4,constr,cset)
-
         perm.setWriteToFile(self.saveInFile)
         perm.setOutputStream(self.outputStream)
-        #print(self.pwdLength)
-        #print(self.maxrep)
-        #print(cset.alpha,cset.alphaBig,cset.num,cset.custom,cset.mandatory)
-        #print()
-        #print(self.charSet.mandatory)
         perm.permuteWithTree_Uli(0,"",0,"",self.spinbox_maxRep.value(),self.charSet.mandatory)
-        #perm.permuteWithTree_Uli(0,"",0,"",self.maxrep,cset.mandatory)
         file.close()
         QMessageBox.information(self,"Congratz","You did it.")
-        #print("finished")
-
-        #print("end")
-
-
