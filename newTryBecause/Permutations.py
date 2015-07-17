@@ -1,5 +1,5 @@
 import re
-from newTryBecause import CharacterSet
+import CharacterSet
 
 __author__ = 'twi'
 import itertools
