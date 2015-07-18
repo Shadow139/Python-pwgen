@@ -198,6 +198,9 @@ class Ui_MainWindow(QtGui.QWidget):
         self.linetext_amntMemory = QtGui.QLineEdit(self.THEWINDOW)
         self.linetext_amntMemory.setGeometry(QtCore.QRect(260, 520, 113, 27))
         self.linetext_amntMemory.setObjectName(_fromUtf8("linetext_amntMemory"))
+        self.button_aboutButton = QtGui.QPushButton(self.THEWINDOW)
+        self.button_aboutButton.setGeometry(QtCore.QRect(680, 477, 100, 25))
+        self.button_aboutButton.setObjectName(_fromUtf8("button_aboutButton"))
 
         self.setUpEvents()
 
@@ -224,6 +227,7 @@ class Ui_MainWindow(QtGui.QWidget):
         self.button_deleteConstraint.setText(_translate("MainWindow", "delete constraint", None))
         self.checkbox_outputStream.setText(_translate("MainWindow", "output-stream", None))
         self.button_startButton.setText(_translate("MainWindow", "do it!!", None))
+        self.button_aboutButton.setText(_translate("MainWindow", "about", None))
         self.label_amntPwd.setText(_translate("MainWindow", "amount of passwords being generated:", None))
         self.label_amntMemory.setText(_translate("MainWindow", "amount of memory required:", None))
         self.linetext_custom.setEnabled(False)
