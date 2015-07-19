@@ -441,6 +441,6 @@ class Ui_MainWindow(QtGui.QWidget):
         QMessageBox.information(self,"Hello","This button does not do anything.")
 
     def adaptAmntPwd(self):
-        x = len(self.charSet.getCharSet)
+        x = len(self.charSet.getCharSet())
         x = x**self.pwdLength
         self.linetext_amntPwd.setText("{0}".format(x))
