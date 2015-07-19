@@ -242,6 +242,7 @@ class Ui_MainWindow(QtGui.QWidget):
         self.slider_lenConstraint.setValue(1)
         self.slider_lenConstraint.setMinimum(1)
         self.slider_lenConstraint.setMaximum(50)
+        self.linetext_amntPwd.setText("{0}".format(0))
 
     def setUpEvents(self):
         # CHECKBOXES
@@ -265,22 +266,27 @@ class Ui_MainWindow(QtGui.QWidget):
         self.button_addConstraint.clicked.connect(self.addConstraint)
         self.button_deleteConstraint.clicked.connect(self.deleteConstraint)
         self.button_startButton.clicked.connect(self.doIt)
+        self.button_aboutButton.clicked.connect(self.aboutClick)
 
     def setPwdLen(self):
         self.pwdLength = self.spinbox_lenPwd.value()
         self.constraints.updateConstraints(self.pwdLength,self.dictSpecialConstraints)
+        self.adaptAmntPwd()
 
     def setAlpha(self):
         self.charSet.setAlpha(False if self.checkbox_lowerCase.checkState() == 0 else True)
         self.constraints.updateConstraints(self.pwdLength,self.dictSpecialConstraints)
+        self.adaptAmntPwd()
 
     def setAlphaBig(self):
         self.charSet.setAlphaBig(False if self.checkbox_upperCase.checkState() == 0 else True)
         self.constraints.updateConstraints(self.pwdLength,self.dictSpecialConstraints)
+        self.adaptAmntPwd()
 
     def setNum(self):
         self.charSet.setNum(False if self.ceckbox_numbers.checkState() == 0 else True)
         self.constraints.updateConstraints(self.pwdLength,self.dictSpecialConstraints)
+        self.adaptAmntPwd()
 
     def enableCustom(self):
         self.linetext_custom.setEnabled(False if self.checkbox_custom.checkState() == 0 else True)
@@ -293,6 +299,7 @@ class Ui_MainWindow(QtGui.QWidget):
         self.charSet.setCustom(self.linetext_custom.text())
         self.linetext_custom.setText(self.charSet.getCustom())
         self.constraints.updateConstraints(self.pwdLength,self.dictSpecialConstraints)
+        self.adaptAmntPwd()
 
     def enableMandatory(self):
         self.linetext_mandatory.setEnabled(False if self.checkbox_mandatory.checkState() == 0 else True)
@@ -429,3 +436,11 @@ class Ui_MainWindow(QtGui.QWidget):
         perm.permuteWithTree_Uli(0,"",0,"",self.spinbox_maxRep.value(),self.charSet.mandatory)
         file.close()
         QMessageBox.information(self,"Congratz","You did it.")
+
+    def aboutClick(self):
+        QMessageBox.information(self,"Hello","This button does not do anything.")
+
+    def adaptAmntPwd(self):
+        x = len(self.charSet.getCharSet)
+        x = x**self.pwdLength
+        self.linetext_amntPwd.setText("{0}".format(x))
